@@ -2,17 +2,17 @@
   "location": "Nokron, Eternal City",
   "bosses": [
     {
-      "id": 1,
+      "id": 150,
       "name": "Mimic Tear",
       "killed": false
     },
     {
-      "id": 2,
+      "id": 151,
       "name": "Regal Ancestor Spirit",
       "killed": false
     },
     {
-      "id": 3,
+      "id": 152,
       "name": "Valiant Gargoyle & Valiant Gargoyle (Twinblade)",
       "killed": false
     }
