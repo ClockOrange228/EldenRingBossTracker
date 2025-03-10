@@ -50,6 +50,10 @@
             z-index: 1000;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
         }
+        .error {
+            color: #ff4444;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -58,7 +62,7 @@
     <div class="boss-list" id="bossList"></div>
 
     <script>
-        // Список путей к JSON-файлам (укажи свои пути)
+        // Список путей к JSON-файлам относительно корня сайта
         const bossFiles = [
             'data/limgrave.json',
             'data/liurnia.json',
@@ -72,11 +76,7 @@
             'data/farum_azula.json',
             'data/forbidden_lands.json',
             'data/nokron.json',
-            'data/deeproot_depths.json',
-            // Добавь остальные файлы, например:
-            // 'liurnia.json',
-            // 'caelid.json',
-            // и т.д.
+            'data/deeproot_depths.json'
         ];
 
         // Функция для загрузки данных из localStorage
@@ -95,19 +95,33 @@
 
         // Функция для загрузки всех JSON-файлов
         async function fetchBossesData() {
-            if (!bossesData) { // Если данных в localStorage нет, загружаем из файлов
-                const promises = bossFiles.map(file => 
-                    fetch(file)
-                        .then(response => response.json())
-                        .catch(error => {
-                            console.error(`Ошибка загрузки ${file}:`, error);
-                            return null;
-                        })
-                );
-                bossesData = (await Promise.all(promises)).filter(data => data !== null);
-                saveBosses(bossesData); // Сохраняем загруженные данные
+            try {
+                if (!bossesData) { // Если данных в localStorage нет, загружаем из файлов
+                    const promises = bossFiles.map(file =>
+                        fetch(file)
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error(`Не удалось загрузить ${file}: ${response.status}`);
+                                }
+                                return response.json();
+                            })
+                            .catch(error => {
+                                console.error(`Ошибка загрузки ${file}:`, error);
+                                return null; // Пропускаем файл, если он не загрузился
+                            })
+                    );
+                    bossesData = (await Promise.all(promises)).filter(data => data !== null);
+                    if (bossesData.length === 0) {
+                        throw new Error('Не удалось загрузить ни один файл с боссами!');
+                    }
+                    saveBosses(bossesData); // Сохраняем в localStorage
+                }
+                renderBossList();
+            } catch (error) {
+                console.error('Ошибка при загрузке данных:', error);
+                const bossList = document.getElementById('bossList');
+                bossList.innerHTML = '<p class="error">Ошибка загрузки данных. Проверь консоль и пути к файлам.</p>';
             }
-            renderBossList();
         }
 
         // Функция для отображения списка боссов
