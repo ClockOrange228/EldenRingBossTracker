@@ -2,37 +2,37 @@
   "location": "Consecrated snowfield	",
   "bosses": [
     {
-      "id": 1,
+      "id": 158,
       "name": "Battlemage Hugues",
       "killed": false
     },
     {
-      "id": 2,
+      "id": 159,
       "name": "Beastman of Farum Azula",
       "killed": false
     },
     {
-      "id": 3,
+      "id": 160,
       "name": "Bell Bearing Hunter",
       "killed": false
     },
     {
-      "id": 4,
+      "id": 161,
       "name": "Black Blade Kindred",
       "killed": false
     },
     {
-      "id": 5,
+      "id": 162,
       "name": "Cemetery Shade",
       "killed": false
     },
     {
-      "id": 6,
+      "id": 163,
       "name": "Cleanrot Knight",
       "killed": false
     },
     {
-      "id": 7,
+      "id": 164,
       "name": "Commander O'Neil",
       "killed": false
     }
