@@ -27,9 +27,14 @@
         .location {
             margin-bottom: 20px;
         }
-        .location h2 {
+        .location summary {
             color: #ffcc00;
-            margin: 10px 0;
+            cursor: pointer;
+            padding: 10px;
+            outline: none; /* Убираем стандартный фокус */
+        }
+        .location details[open] summary {
+            border-bottom: 1px solid #444; /* Линия под заголовком при открытии */
         }
         .boss-item {
             display: flex;
@@ -64,7 +69,6 @@
     <div class="boss-list" id="bossList"></div>
 
     <script>
-        // Список путей к JSON-файлам относительно корня сайта
         const bossFiles = [
             'data/limgrave.json',
             'data/liurnia.json',
@@ -81,24 +85,20 @@
             'data/deeproot_depths.json'
         ];
 
-        // Функция для загрузки данных из localStorage
         function loadBosses() {
             const savedBosses = localStorage.getItem('bosses');
             return savedBosses ? JSON.parse(savedBosses) : null;
         }
 
-        // Функция для сохранения данных в localStorage
         function saveBosses(bosses) {
             localStorage.setItem('bosses', JSON.stringify(bosses));
         }
 
-        // Загружаем боссов
         let bossesData = loadBosses();
 
-        // Функция для загрузки всех JSON-файлов
         async function fetchBossesData() {
             try {
-                if (!bossesData) { // Если данных в localStorage нет, загружаем из файлов
+                if (!bossesData) {
                     const promises = bossFiles.map(file =>
                         fetch(file)
                             .then(response => {
@@ -109,14 +109,14 @@
                             })
                             .catch(error => {
                                 console.error(`Ошибка загрузки ${file}:`, error);
-                                return null; // Пропускаем файл, если он не загрузился
+                                return null;
                             })
                     );
                     bossesData = (await Promise.all(promises)).filter(data => data !== null);
                     if (bossesData.length === 0) {
                         throw new Error('Не удалось загрузить ни один файл с боссами!');
                     }
-                    saveBosses(bossesData); // Сохраняем в localStorage
+                    saveBosses(bossesData);
                 }
                 renderBossList();
             } catch (error) {
@@ -126,29 +126,30 @@
             }
         }
 
-        // Функция для отображения списка боссов
         function renderBossList() {
             const bossList = document.getElementById('bossList');
             bossList.innerHTML = '';
             bossesData.forEach(location => {
                 const locationDiv = document.createElement('div');
                 locationDiv.className = 'location';
-                locationDiv.innerHTML = `<h2>${location.location}</h2>`;
-                location.bosses.forEach(boss => {
-                    const bossItem = document.createElement('div');
-                    bossItem.className = 'boss-item';
-                    bossItem.innerHTML = `
-                        <input type="checkbox" ${boss.killed ? 'checked' : ''} onchange="toggleBoss('${location.location}', ${boss.id})">
-                        <span>${boss.name}</span>
-                    `;
-                    locationDiv.appendChild(bossItem);
-                });
+                locationDiv.innerHTML = `
+                    <details>
+                        <summary>${location.location}</summary>
+                        <div class="bosses-container">
+                            ${location.bosses.map(boss => `
+                                <div class="boss-item">
+                                    <input type="checkbox" ${boss.killed ? 'checked' : ''} onchange="toggleBoss('${location.location}', ${boss.id})">
+                                    <span>${boss.name}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </details>
+                `;
                 bossList.appendChild(locationDiv);
             });
             updateStats();
         }
 
-        // Функция для изменения статуса босса
         function toggleBoss(locationName, bossId) {
             bossesData = bossesData.map(location => {
                 if (location.location === locationName) {
@@ -165,7 +166,6 @@
             renderBossList();
         }
 
-        // Функция для обновления статистики
         function updateStats() {
             const totalBosses = bossesData.reduce((sum, location) => sum + location.bosses.length, 0);
             const killedBosses = bossesData.reduce((sum, location) => 
@@ -177,7 +177,6 @@
             `;
         }
 
-        // Инициализация
         fetchBossesData();
     </script>
 </body>
