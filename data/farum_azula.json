@@ -2,17 +2,17 @@
   "location": "Crumbling Farum Azula",
   "bosses": [
     {
-      "id": 1,
+      "id": 145,
       "name": "Beast Clergyman / Maliketh, the Black Blade",
       "killed": false
     },
     {
-      "id": 2,
+      "id": 146,
       "name": "Dragonlord Placidusax",
       "killed": false
     },
     {
-      "id": 3,
+      "id": 147,
       "name": "Godskin Duo",
       "killed": false
     }
