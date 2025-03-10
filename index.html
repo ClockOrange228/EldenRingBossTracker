@@ -138,7 +138,7 @@
             transition: max-height 0.3s ease-in-out;
         }
         .bosses-container.open {
-            max-height: 1000px; /* Достаточно большой размер для содержимого */
+            max-height: none; /* Убрано ограничение высоты */
         }
         .boss-item {
             display: flex;
@@ -177,7 +177,6 @@
             transition: color 0.3s ease-in-out;
         }
 
-        /* Медиа-запросы для мобильных устройств */
         @media (max-width: 768px) {
             .header {
                 padding: 10px;
@@ -261,6 +260,10 @@
 
         async function fetchBossesData() {
             try {
+                filter = 'all'; // Сбрасываем фильтр
+                searchQuery = ''; // Сбрасываем поиск
+                document.getElementById('search').value = ''; // Очищаем поле поиска
+                document.querySelector('input[name="filter"][value="all"]').checked = true; // Устанавливаем фильтр "All"
                 if (!bossesData) {
                     const promises = bossFiles.map(file =>
                         fetch(file)
@@ -308,6 +311,7 @@
             console.log('Список локаций для рендеринга:', bossesData.map(loc => loc.location));
             bossesData.forEach(location => {
                 console.log(`Рендеринг локации: ${location.location}, Total Bosses in Data: ${location.bosses.length}`);
+                console.log(`Боссы в ${location.location}:`, location.bosses.map(b => b.name));
                 const totalBosses = location.bosses.length;
                 const killedBosses = location.bosses.filter(boss => boss.killed).length;
                 const completionPercentage = ((killedBosses / totalBosses) * 100).toFixed(2);
@@ -389,6 +393,8 @@
 
         function applyFiltersAndSearch() {
             const searchValue = searchQuery.toLowerCase();
+            console.log('Текущий фильтр:', filter);
+            console.log('Текущий поисковый запрос:', searchQuery);
             document.querySelectorAll('.location').forEach(location => {
                 const locationName = location.querySelector('.location-header').getAttribute('data-location');
                 const bosses = bossesData.find(loc => loc.location === locationName).bosses;
@@ -400,14 +406,15 @@
                     const boss = bosses.find(b => b.id === bossId);
                     const matchesSearch = bossName.includes(searchValue);
                     const matchesFilter = filter === 'all' || 
-                                        (filter === 'killed' && boss.killed) || 
-                                        (filter === 'not-killed' && !boss.killed);
+                                         (filter === 'killed' && boss.killed) || 
+                                         (filter === 'not-killed' && !boss.killed);
 
                     if (matchesSearch && matchesFilter) {
                         item.classList.remove('hidden');
                         hasVisibleBosses = true;
                     } else {
                         item.classList.add('hidden');
+                        console.log(`Скрыт босс: ${boss.name} в локации ${locationName}. Причина: ${matchesSearch ? '' : 'не соответствует поиску'} ${matchesFilter ? '' : 'не соответствует фильтру'}`);
                     }
                 });
 
