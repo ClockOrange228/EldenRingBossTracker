@@ -2,47 +2,47 @@
   "location": "Leyndell, Royal Capital",
   "bosses": [
     {
-      "id": 1,
+      "id": 117,
       "name": "Bell Bearing Hunter",
       "killed": false
     },
     {
-      "id": 2,
+      "id": 118,
       "name": "Crucible Knight & Crucible Knight Ordovis",
       "killed": false
     },
     {
-      "id": 3,
+      "id": 119,
       "name": "Divine Bridge Golem",
       "killed": false
     },
     {
-      "id": 4,
+      "id": 120,
       "name": "Esgar, Priest of Blood",
       "killed": false
     },
     {
-      "id": 5,
+      "id": 121,
       "name": "Fell Twins",
       "killed": false
     },
     {
-      "id": 6,
+      "id": 122,
       "name": "Godfrey, First Elden Lord",
       "killed": false
     },
     {
-      "id": 7,
+      "id": 123,
       "name": "Morgott the Omen King",
       "killed": false
     },
     {
-      "id": 8,
+      "id": 124,
       "name": "Mogh, the Omen",
       "killed": false
     },
     {
-      "id": 9,
+      "id": 125,
       "name": "Onyx Lord",
       "killed": false
     }
