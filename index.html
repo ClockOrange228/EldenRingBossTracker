@@ -25,13 +25,21 @@
             padding-top: 100px;
         }
         .location {
-            margin-bottom: 20px;
+            margin-bottom: 10px; /* Уменьшили отступ между локациями */
+            border-bottom: 1px solid #444; /* Добавили разделитель между локациями */
+            padding-bottom: 10px; /* Отступ перед разделителем */
+        }
+        .location:last-child {
+            border-bottom: none; /* Убираем разделитель у последней локации */
         }
         .location summary {
             color: #ffcc00;
             cursor: pointer;
             padding: 10px;
             outline: none; /* Убираем стандартный фокус */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         .location details[open] summary {
             border-bottom: 1px solid #444; /* Линия под заголовком при открытии */
@@ -60,6 +68,26 @@
         .error {
             color: #ff4444;
             text-align: center;
+        }
+        .progress-bar-container {
+            width: 200px;
+            height: 10px;
+            background-color: #333;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-left: 10px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .progress-bar {
+            height: 100%;
+            background-color: #ffcc00;
+            transition: width 0.3s ease-in-out;
+        }
+        .progress-text {
+            font-size: 14px;
+            margin-left: 10px;
+            color: #ccc;
         }
     </style>
 </head>
@@ -130,11 +158,21 @@
             const bossList = document.getElementById('bossList');
             bossList.innerHTML = '';
             bossesData.forEach(location => {
+                const totalBosses = location.bosses.length;
+                const killedBosses = location.bosses.filter(boss => boss.killed).length;
+                const completionPercentage = ((killedBosses / totalBosses) * 100).toFixed(2);
+
                 const locationDiv = document.createElement('div');
                 locationDiv.className = 'location';
                 locationDiv.innerHTML = `
                     <details>
-                        <summary>${location.location}</summary>
+                        <summary>
+                            <span>${location.location}</span>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" style="width: ${completionPercentage}%"></div>
+                            </div>
+                            <span class="progress-text">${killedBosses}/${totalBosses} (${completionPercentage}%)</span>
+                        </summary>
                         <div class="bosses-container">
                             ${location.bosses.map(boss => `
                                 <div class="boss-item">
