@@ -14,15 +14,44 @@
             padding: 20px;
             margin: 0;
         }
-        h1 {
-            text-align: center;
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(26, 26, 26, 0.9);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        .header h1 {
             color: #ffcc00;
-            margin-bottom: 20px;
+            margin: 0;
+            font-size: 24px;
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+        .search-container input {
+            padding: 5px;
+            font-size: 14px;
+            background-color: #333;
+            border: 1px solid #444;
+            color: #fff;
+            border-radius: 5px;
+        }
+        .stats {
+            font-size: 18px;
+            color: #ccc;
         }
         .boss-list {
             max-width: 600px;
             margin: 0 auto;
-            padding-top: 100px;
+            padding-top: 80px; /* Увеличили отступ сверху из-за панельки */
         }
         .location {
             margin-bottom: 10px;
@@ -42,14 +71,14 @@
             gap: 10px;
         }
         .location-header:hover {
-            background-color: rgba(255, 204, 0, 0.1); /* Подсветка при наведении */
+            background-color: rgba(255, 204, 0, 0.1);
         }
         .bosses-container {
-            display: none; /* Скрыт по умолчанию */
-            border-top: 1px solid #444; /* Линия под заголовком, когда список открыт */
+            display: none;
+            border-top: 1px solid #444;
         }
         .bosses-container.open {
-            display: block; /* Показываем, когда открыт */
+            display: block;
         }
         .boss-item {
             display: flex;
@@ -57,20 +86,25 @@
             padding: 10px;
             border-bottom: 1px solid #444;
         }
+        .boss-item.hidden {
+            display: none; /* Скрываем элементы при фильтрации или поиске */
+        }
         .boss-item input[type="checkbox"] {
             margin-right: 10px;
         }
-        .stats {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(26, 26, 26, 0.9);
-            text-align: right;
-            padding: 10px 0;
-            font-size: 18px;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        .filters {
+            max-width: 600px;
+            margin: 20px auto 10px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .filters label {
+            color: #ccc;
+            cursor: pointer;
+        }
+        .filters input[type="radio"] {
+            margin-right: 5px;
         }
         .error {
             color: #ff4444;
@@ -87,19 +121,28 @@
         }
         .progress-bar {
             height: 100%;
-            background-color: #ffcc00;
-            transition: width 0.3s ease-in-out;
+            transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
         }
         .progress-text {
             font-size: 14px;
-            color: #ccc;
             text-align: right;
+            transition: color 0.3s ease-in-out;
         }
     </style>
 </head>
 <body>
-    <h1>Elden Ring Boss Tracker</h1>
-    <div class="stats" id="stats"></div>
+    <div class="header">
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Поиск босса...">
+        </div>
+        <h1>Elden Ring Boss Tracker</h1>
+        <div class="stats" id="stats"></div>
+    </div>
+    <div class="filters">
+        <label><input type="radio" name="filter" value="all" checked> Все</label>
+        <label><input type="radio" name="filter" value="killed"> Убитые</label>
+        <label><input type="radio" name="filter" value="not-killed"> Неубитые</label>
+    </div>
     <div class="boss-list" id="bossList"></div>
 
     <script>
@@ -129,6 +172,8 @@
         }
 
         let bossesData = loadBosses();
+        let filter = 'all'; // Текущий фильтр
+        let searchQuery = ''; // Текущий запрос поиска
 
         async function fetchBossesData() {
             try {
@@ -153,11 +198,18 @@
                     saveBosses(bossesData);
                 }
                 renderBossList();
+                setupEventListeners();
             } catch (error) {
                 console.error('Ошибка при загрузке данных:', error);
                 const bossList = document.getElementById('bossList');
                 bossList.innerHTML = '<p class="error">Ошибка загрузки данных. Проверь консоль и пути к файлам.</p>';
             }
+        }
+
+        function getProgressColor(percentage) {
+            if (percentage <= 33) return '#ff4444'; // Красный
+            if (percentage <= 66) return '#ffcc00'; // Жёлтый
+            return '#00cc00'; // Зелёный
         }
 
         function renderBossList() {
@@ -167,6 +219,7 @@
                 const totalBosses = location.bosses.length;
                 const killedBosses = location.bosses.filter(boss => boss.killed).length;
                 const completionPercentage = ((killedBosses / totalBosses) * 100).toFixed(2);
+                const progressColor = getProgressColor(completionPercentage);
 
                 const locationDiv = document.createElement('div');
                 locationDiv.className = 'location';
@@ -174,13 +227,13 @@
                     <div class="location-header" data-location="${location.location}">
                         <span>${location.location}</span>
                         <div class="progress-bar-container">
-                            <div class="progress-bar" style="width: ${completionPercentage}%"></div>
+                            <div class="progress-bar" style="width: ${completionPercentage}%; background-color: ${progressColor};"></div>
                         </div>
-                        <span class="progress-text">${killedBosses}/${totalBosses} (${completionPercentage}%)</span>
+                        <span class="progress-text" style="color: ${progressColor}">${killedBosses}/${totalBosses} (${completionPercentage}%)</span>
                     </div>
                     <div class="bosses-container">
                         ${location.bosses.map(boss => `
-                            <div class="boss-item">
+                            <div class="boss-item" data-boss-id="${boss.id}">
                                 <input type="checkbox" data-location="${location.location}" data-boss-id="${boss.id}" ${boss.killed ? 'checked' : ''}>
                                 <span>${boss.name}</span>
                             </div>
@@ -189,25 +242,32 @@
                 `;
                 bossList.appendChild(locationDiv);
             });
+            updateStats();
+            applyFiltersAndSearch(); // Применяем фильтры и поиск после рендеринга
+        }
 
-            // Добавляем обработчики для заголовков локаций
-            document.querySelectorAll('.location-header').forEach(header => {
-                header.addEventListener('click', () => {
-                    const container = header.nextElementSibling;
-                    container.classList.toggle('open');
-                });
-            });
+        function updateBossItem(locationName, bossId) {
+            const location = bossesData.find(loc => loc.location === locationName);
+            const totalBosses = location.bosses.length;
+            const killedBosses = location.bosses.filter(boss => boss.killed).length;
+            const completionPercentage = ((killedBosses / totalBosses) * 100).toFixed(2);
+            const progressColor = getProgressColor(completionPercentage);
 
-            // Добавляем обработчики для чекбоксов
-            document.querySelectorAll('.boss-item input[type="checkbox"]').forEach(checkbox => {
-                checkbox.addEventListener('change', (event) => {
-                    const locationName = checkbox.getAttribute('data-location');
-                    const bossId = parseInt(checkbox.getAttribute('data-boss-id'));
-                    toggleBoss(locationName, bossId);
-                });
-            });
+            // Обновляем прогресс-бар и текст для локации
+            const locationDiv = document.querySelector(`.location-header[data-location="${locationName}"]`);
+            const progressBar = locationDiv.querySelector('.progress-bar');
+            const progressText = locationDiv.querySelector('.progress-text');
+            progressBar.style.width = `${completionPercentage}%`;
+            progressBar.style.backgroundColor = progressColor;
+            progressText.textContent = `${killedBosses}/${totalBosses} (${completionPercentage}%)`;
+            progressText.style.color = progressColor;
+
+            // Обновляем чекбокс
+            const checkbox = document.querySelector(`.boss-item input[data-location="${locationName}"][data-boss-id="${bossId}"]`);
+            checkbox.checked = !checkbox.checked;
 
             updateStats();
+            applyFiltersAndSearch();
         }
 
         function toggleBoss(locationName, bossId) {
@@ -223,7 +283,7 @@
                 return location;
             });
             saveBosses(bossesData);
-            renderBossList();
+            updateBossItem(locationName, bossId);
         }
 
         function updateStats() {
@@ -232,9 +292,69 @@
                 sum + location.bosses.filter(boss => boss.killed).length, 0);
             const completionPercentage = ((killedBosses / totalBosses) * 100).toFixed(2);
             const stats = document.getElementById('stats');
-            stats.innerHTML = `
-                Боссы: ${killedBosses}/${totalBosses} (${completionPercentage}%)
-            `;
+            stats.textContent = `Боссы: ${killedBosses}/${totalBosses} (${completionPercentage}%)`;
+        }
+
+        function applyFiltersAndSearch() {
+            const searchValue = searchQuery.toLowerCase();
+            document.querySelectorAll('.location').forEach(location => {
+                const locationName = location.querySelector('.location-header').getAttribute('data-location');
+                const bosses = bossesData.find(loc => loc.location === locationName).bosses;
+                let hasVisibleBosses = false;
+
+                location.querySelectorAll('.boss-item').forEach(item => {
+                    const bossName = item.querySelector('span').textContent.toLowerCase();
+                    const bossId = parseInt(item.getAttribute('data-boss-id'));
+                    const boss = bosses.find(b => b.id === bossId);
+                    const matchesSearch = bossName.includes(searchValue);
+                    const matchesFilter = filter === 'all' || 
+                                        (filter === 'killed' && boss.killed) || 
+                                        (filter === 'not-killed' && !boss.killed);
+
+                    if (matchesSearch && matchesFilter) {
+                        item.classList.remove('hidden');
+                        hasVisibleBosses = true;
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+
+                // Скрываем локацию, если нет видимых боссов
+                location.style.display = hasVisibleBosses ? 'block' : 'none';
+            });
+        }
+
+        function setupEventListeners() {
+            // Обработчики для заголовков локаций
+            document.querySelectorAll('.location-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const container = header.nextElementSibling;
+                    container.classList.toggle('open');
+                });
+            });
+
+            // Обработчики для чекбоксов
+            document.querySelectorAll('.boss-item input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', (event) => {
+                    const locationName = checkbox.getAttribute('data-location');
+                    const bossId = parseInt(checkbox.getAttribute('data-boss-id'));
+                    toggleBoss(locationName, bossId);
+                });
+            });
+
+            // Обработчик для фильтров
+            document.querySelectorAll('.filters input[type="radio"]').forEach(radio => {
+                radio.addEventListener('change', (event) => {
+                    filter = event.target.value;
+                    applyFiltersAndSearch();
+                });
+            });
+
+            // Обработчик для поиска
+            document.getElementById('search').addEventListener('input', (event) => {
+                searchQuery = event.target.value;
+                applyFiltersAndSearch();
+            });
         }
 
         fetchBossesData();
