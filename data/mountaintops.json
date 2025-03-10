@@ -1,0 +1,80 @@
+{
+  "location": "Mountaintops of the Giants",
+  "bosses": [
+    {
+      "id": 1,
+      "name": "Ancient Hero of Zamor",
+      "killed": false
+    },
+    {
+      "id": 2,
+      "name": "Astel, Stars of Darkness",
+      "killed": false
+    },
+    {
+      "id": 3,
+      "name": "Black Blade Kindred",
+      "killed": false
+    },
+    {
+      "id": 4,
+      "name": "Borealis the Freezing Fog",
+      "killed": false
+    },
+    {
+      "id": 5,
+      "name": "Commander Niall",
+      "killed": false
+    },
+    {
+      "id": 6,
+      "name": "Death Rite Bird (Central Mountaintops of the Giants)",
+      "killed": false
+    },
+    {
+      "id": 7,
+      "name": "Death Rite Bird (West Mountaintops of the Giants)",
+      "killed": false
+    },
+    {
+      "id": 8,
+      "name": "Erdtree Avatar",
+      "killed": false
+    },
+    {
+      "id": 9,
+      "name": "Fire Giant",
+      "killed": false
+    },
+    {
+      "id": 10,
+      "name": "Godskin Apostle & Godskin Noble",
+      "killed": false
+    },
+    {
+      "id": 11,
+      "name": "Great Wyrm Theodorix",
+      "killed": false
+    },
+    {
+      "id": 12,
+      "name": "Misbegotten Crusader",
+      "killed": false
+    },
+    {
+      "id": 13,
+      "name": "Tibia Mariner",
+      "killed": false
+    },
+    {
+      "id": 14,
+      "name": "Ulcerated Tree Spirit",
+      "killed": false
+    },
+    {
+      "id": 15,
+      "name": "Vyke, Knight of the Roundtable",
+      "killed": false
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "location": "Siofra River",
+  "bosses": [
+    {
+      "id": 1,
+      "name": "Ancestor Spirit",
+      "killed": false
+    },
+    {
+      "id": 2,
+      "name": "Dragonkin Soldier",
+      "killed": false
+    },
+    {
+      "id": 3,
+      "name": "Mogh, Lord of Blood",
+      "killed": false
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "location": "Mt. Gelmir",
+  "bosses": [
+    {
+      "id": 1,
+      "name": "Abductor Virgins",
+      "killed": false
+    },
+    {
+      "id": 2,
+      "name": "Demi-Human Queen Margot",
+      "killed": false
+    },
+    {
+      "id": 3,
+      "name": "Demi-Human Queen Maggie",
+      "killed": false
+    },
+    {
+      "id": 4,
+      "name": "Erdtree Burial Watchdog",
+      "killed": false
+    },
+    {
+      "id": 5,
+      "name": "Full-Grown Fallingstar Beast",
+      "killed": false
+    },
+    {
+      "id": 6,
+      "name": "Godskin Noble",
+      "killed": false
+    },
+    {
+      "id": 7,
+      "name": "Kindred of Rot",
+      "killed": false
+    },
+    {
+      "id": 8,
+      "name": "Magma Wyrm",
+      "killed": false
+    },
+    {
+      "id": 9,
+      "name": "Perfumer Tricia & Misbegotten Warrior",
+      "killed": false
+    },
+    {
+      "id": 10,
+      "name": "Ulcerated Tree Spirit",
+      "killed": false
+    },
+    {
+      "id": 11,
+      "name": "Ancient Dragon Lansseax",
+      "killed": false
+    },
+    {
+      "id": 12,
+      "name": "God-Devouring Serpent / Rykard, Lord of Blasphemy",
+      "killed": false
+    },
+    {
+      "id": 13,
+      "name": "Red Wolf of the Champion",
+      "killed": false
+    }
+  ]
+}

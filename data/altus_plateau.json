@@ -1,0 +1,90 @@
+{
+  "location": "Altus Plateau",
+  "bosses": [
+    {
+      "id": 1,
+      "name": "Ancient Hero of Zamor",
+      "killed": false
+    },
+    {
+      "id": 2,
+      "name": "Black Knife Assassin (Sage's Cave)",
+      "killed": false
+    },
+    {
+      "id": 3,
+      "name": "Black Knife Assassin (Sainted Hero's Grave)",
+      "killed": false
+    },
+    {
+      "id": 4,
+      "name": "Crystalian Spear & Crystalian Ringblade",
+      "killed": false
+    },
+    {
+      "id": 5,
+      "name": "Demi-Human Queen Gilika",
+      "killed": false
+    },
+    {
+      "id": 6,
+      "name": "Draconic Tree Sentinel",
+      "killed": false
+    },
+    {
+      "id": 7,
+      "name": "Elemer of the Briar",
+      "killed": false
+    },
+    {
+      "id": 8,
+      "name": "Fallingstar Beast",
+      "killed": false
+    },
+    {
+      "id": 9,
+      "name": "Godefroy The Grafted",
+      "killed": false
+    },
+    {
+      "id": 10,
+      "name": "Godskin Apostle",
+      "killed": false
+    },
+    {
+      "id": 11,
+      "name": "Grave Warden Duelist",
+      "killed": false
+    },
+    {
+      "id": 12,
+      "name": "Necromancer Garris",
+      "killed": false
+    },
+    {
+      "id": 13,
+      "name": "Sanguine Noble",
+      "killed": false
+    },
+    {
+      "id": 14,
+      "name": "Stonedigger Troll",
+      "killed": false
+    },
+    {
+      "id": 15,
+      "name": "Tibia Mariner",
+      "killed": false
+    },
+    {
+      "id": 16,
+      "name": "Tree Sentinel Duo",
+      "killed": false
+    },
+    {
+      "id": 17,
+      "name": "Wormface",
+      "killed": false
+    }
+  ]
+}

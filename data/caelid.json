@@ -1,0 +1,130 @@
+{
+  "location": "Caelid",
+  "bosses": [
+    {
+      "id": 1,
+      "name": "Battlemage Hugues",
+      "killed": false
+    },
+    {
+      "id": 2,
+      "name": "Beastman of Farum Azula",
+      "killed": false
+    },
+    {
+      "id": 3,
+      "name": "Bell Bearing Hunter",
+      "killed": false
+    },
+    {
+      "id": 4,
+      "name": "Black Blade Kindred",
+      "killed": false
+    },
+    {
+      "id": 5,
+      "name": "Cemetery Shade",
+      "killed": false
+    },
+    {
+      "id": 6,
+      "name": "Cleanrot Knight",
+      "killed": false
+    },
+    {
+      "id": 7,
+      "name": "Commander O'Neil",
+      "killed": false
+    },
+    {
+      "id": 8,
+      "name": "Crucible Knight & Misbegotten Warrior",
+      "killed": false
+    },
+    {
+      "id": 9,
+      "name": "Death Rite Bird",
+      "killed": false
+    },
+    {
+      "id": 10,
+      "name": "Decaying Ekzykes",
+      "killed": false
+    },
+    {
+      "id": 11,
+      "name": "Elder Dragon Greyoll",
+      "killed": false
+    },
+    {
+      "id": 12,
+      "name": "Erdtree Avatar",
+      "killed": false
+    },
+    {
+      "id": 13,
+      "name": "Erdtree Burial Watchdog",
+      "killed": false
+    },
+    {
+      "id": 14,
+      "name": "Fallingstar Beast",
+      "killed": false
+    },
+    {
+      "id": 15,
+      "name": "Flying Dragon Greyll",
+      "killed": false
+    },
+    {
+      "id": 16,
+      "name": "Frenzied Duelist",
+      "killed": false
+    },
+    {
+      "id": 17,
+      "name": "Godskin Apostle",
+      "killed": false
+    },
+    {
+      "id": 18,
+      "name": "Mad Pumpkin Heads",
+      "killed": false
+    },
+    {
+      "id": 19,
+      "name": "Magma Wyrm",
+      "killed": false
+    },
+    {
+      "id": 20,
+      "name": "Night's Cavalry (2)",
+      "killed": false
+    },
+    {
+      "id": 21,
+      "name": "Nox Swordstress & Nox Priest",
+      "killed": false
+    },
+    {
+      "id": 22,
+      "name": "Putrid Avatar",
+      "killed": false
+    },
+    {
+      "id": 23,
+      "name": "Putrid Tree Spirit",
+      "killed": false
+    },
+    {
+      "id": 24,
+      "name": "Putrid Crystalian Trio",
+      "killed": false
+    },
+    {
+      "id": 25,
+      "name": "Starscourge Radahn",
+      "killed": false
+    }
+  ]
+}

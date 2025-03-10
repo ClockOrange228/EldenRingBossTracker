@@ -1,0 +1,10 @@
+{
+  "location": "Ainsel River",
+  "bosses": [
+    {
+      "id": 1,
+      "name": "Dragonkin Soldier of Nokstella",
+      "killed": false
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "location": "Forbidden Lands",
+  "bosses": [
+    {
+      "id": 1,
+      "name": "Black Blade Kindred",
+      "killed": false
+    },
+    {
+      "id": 2,
+      "name": "Night's Cavalry",
+      "killed": false
+    }
+  ]
+}

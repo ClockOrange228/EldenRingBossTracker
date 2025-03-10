@@ -1,0 +1,20 @@
+{
+  "location": "Deeproot Depths",
+  "bosses": [
+    {
+      "id": 1,
+      "name": "Crucible Knight Siluria",
+      "killed": false
+    },
+    {
+      "id": 2,
+      "name": "Fia's Champions",
+      "killed": false
+    },
+    {
+      "id": 3,
+      "name": "Lichdragon Fortissax",
+      "killed": false
+    }
+  ]
+}
