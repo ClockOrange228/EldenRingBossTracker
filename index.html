@@ -13,6 +13,7 @@
             color: #fff;
             padding: 20px;
             margin: 0;
+            min-height: 100vh;
         }
         .header {
             position: fixed;
@@ -22,6 +23,7 @@
             background-color: rgba(26, 26, 26, 0.9);
             padding: 10px 20px;
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
@@ -29,72 +31,84 @@
         }
         .header h1 {
             color: #ffcc00;
-            margin: 0;
-            font-size: 24px;
-            flex-grow: 1; /* Растягивает заголовок, но не даёт ему двигаться */
-            text-align: center; /* Центрирует заголовок */
+            margin: 10px 0;
+            font-size: clamp(18px, 5vw, 24px);
+            flex-grow: 1;
+            text-align: center;
         }
         .search-container {
             display: flex;
             align-items: center;
             position: relative;
+            width: 100%;
+            max-width: 300px;
+            margin: 5px auto;
         }
         .search-container input {
-            padding: 5px;
+            padding: 8px;
             font-size: 14px;
             background-color: #333;
             border: 1px solid #444;
             color: #fff;
             border-radius: 5px;
-            margin-left: 10px; /* Отступ слева от кнопки фильтра */
+            width: 100%;
+            margin-left: 10px;
         }
         .filter-button {
-            padding: 5px 10px;
+            padding: 8px 15px;
             background-color: #ffcc00;
             color: #1a1a1a;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-size: 14px;
+            transition: background-color 0.3s ease;
         }
         .filter-button:hover {
             background-color: #e6b800;
         }
         .filter-menu {
-            display: none;
             position: absolute;
-            top: 35px;
+            top: 100%;
             left: 0;
             background-color: #333;
             border: 1px solid #444;
             border-radius: 5px;
             padding: 10px;
             z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: opacity 0.2s ease, transform 0.2s ease;
         }
         .filter-menu.open {
             display: block;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(5px);
         }
         .filter-menu label {
             display: block;
             color: #ccc;
             cursor: pointer;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
         .filter-menu input[type="radio"] {
             margin-right: 5px;
         }
         .stats {
-            font-size: 18px;
+            font-size: clamp(14px, 4vw, 18px);
             color: #ccc;
-            width: 200px; /* Фиксированная ширина для стабильности */
-            text-align: right;
-            padding-right: 20px; /* Отступ справа, чтобы не перекрывался скроллбаром */
-            flex-shrink: 0; /* Предотвращает сжатие */
+            text-align: center;
+            padding: 5px 10px;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto;
         }
         .boss-list {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
-            padding-top: 80px;
+            padding-top: 120px;
         }
         .location {
             margin-bottom: 10px;
@@ -109,25 +123,29 @@
             cursor: pointer;
             padding: 10px;
             display: grid;
-            grid-template-columns: 1fr 200px 100px;
+            grid-template-columns: 1fr auto auto;
             align-items: center;
             gap: 10px;
+            font-size: clamp(14px, 4vw, 16px);
         }
         .location-header:hover {
             background-color: rgba(255, 204, 0, 0.1);
         }
         .bosses-container {
-            display: none;
             border-top: 1px solid #444;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
         }
         .bosses-container.open {
-            display: block;
+            max-height: 1000px; /* Достаточно большой размер для содержимого */
         }
         .boss-item {
             display: flex;
             align-items: center;
             padding: 10px;
             border-bottom: 1px solid #444;
+            font-size: clamp(12px, 3.5vw, 14px);
         }
         .boss-item.hidden {
             display: none;
@@ -138,9 +156,10 @@
         .error {
             color: #ff4444;
             text-align: center;
+            padding: 20px;
         }
         .progress-bar-container {
-            width: 200px;
+            width: clamp(100px, 30vw, 200px);
             height: 10px;
             background-color: #333;
             border-radius: 5px;
@@ -153,9 +172,41 @@
             transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
         }
         .progress-text {
-            font-size: 14px;
+            font-size: clamp(12px, 3vw, 14px);
             text-align: right;
             transition: color 0.3s ease-in-out;
+        }
+
+        /* Медиа-запросы для мобильных устройств */
+        @media (max-width: 768px) {
+            .header {
+                padding: 10px;
+                flex-direction: column;
+            }
+            .search-container {
+                order: 1;
+                width: 100%;
+                max-width: none;
+            }
+            .header h1 {
+                order: 2;
+                width: 100%;
+            }
+            .stats {
+                order: 3;
+                width: 100%;
+            }
+            .boss-list {
+                padding-top: 140px;
+            }
+            .location-header {
+                grid-template-columns: 1fr auto;
+                gap: 5px;
+            }
+            .progress-text {
+                grid-column: 1 / -1;
+                text-align: left;
+            }
         }
     </style>
 </head>
@@ -284,7 +335,6 @@
             const completionPercentage = ((killedBosses / totalBosses) * 100).toFixed(2);
             const progressColor = getProgressColor(completionPercentage);
 
-            // Обновляем прогресс-бар и текст
             const locationDiv = document.querySelector(`.location-header[data-location="${locationName}"]`);
             const progressBar = locationDiv.querySelector('.progress-bar');
             const progressText = locationDiv.querySelector('.progress-text');
@@ -293,7 +343,6 @@
             progressText.textContent = `${killedBosses}/${totalBosses} (${completionPercentage}%)`;
             progressText.style.color = progressColor;
 
-            // Обновляем чекбокс на основе данных
             const checkbox = document.querySelector(`.boss-item input[data-location="${locationName}"][data-boss-id="${bossId}"]`);
             checkbox.checked = boss.killed;
 
@@ -355,7 +404,6 @@
         }
 
         function setupEventListeners() {
-            // Обработчики для заголовков локаций
             document.querySelectorAll('.location-header').forEach(header => {
                 header.addEventListener('click', () => {
                     const container = header.nextElementSibling;
@@ -363,7 +411,6 @@
                 });
             });
 
-            // Обработчики для чекбоксов
             document.querySelectorAll('.boss-item input[type="checkbox"]').forEach(checkbox => {
                 checkbox.addEventListener('change', (event) => {
                     const locationName = checkbox.getAttribute('data-location');
@@ -372,30 +419,26 @@
                 });
             });
 
-            // Обработчик для кнопки фильтра
             const filterButton = document.querySelector('.filter-button');
             const filterMenu = document.querySelector('.filter-menu');
             filterButton.addEventListener('click', () => {
                 filterMenu.classList.toggle('open');
             });
 
-            // Обработчик для фильтров
             document.querySelectorAll('.filter-menu input[type="radio"]').forEach(radio => {
                 radio.addEventListener('change', (event) => {
                     filter = event.target.value;
                     applyFiltersAndSearch();
-                    filterMenu.classList.remove('open'); // Закрываем меню после выбора
+                    filterMenu.classList.remove('open');
                 });
             });
 
-            // Закрытие меню при клике вне его
             document.addEventListener('click', (event) => {
                 if (!filterButton.contains(event.target) && !filterMenu.contains(event.target)) {
                     filterMenu.classList.remove('open');
                 }
             });
 
-            // Обработчик для поиска
             document.getElementById('search').addEventListener('input', (event) => {
                 searchQuery = event.target.value;
                 applyFiltersAndSearch();
