@@ -2,12 +2,12 @@
   "location": "Forbidden Lands",
   "bosses": [
     {
-      "id": 1,
+      "id": 1148,
       "name": "Black Blade Kindred",
       "killed": false
     },
     {
-      "id": 2,
+      "id": 149,
       "name": "Night's Cavalry",
       "killed": false
     }
