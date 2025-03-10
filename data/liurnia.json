@@ -98,41 +98,46 @@
     },
     {
       "id": 20,
-      "name": "Night's Cavalry (2)",
+      "name": "Night's Cavalry",
       "killed": false
     },
-    {
+      {
       "id": 21,
-      "name": "Omenkiller",
+      "name": "Night's Cavalry",
       "killed": false
     },
     {
       "id": 22,
-      "name": "Red Wolf of Radagon",
+      "name": "Omenkiller",
       "killed": false
     },
     {
       "id": 23,
-      "name": "Rennala, Queen of the Full Moon",
+      "name": "Red Wolf of Radagon",
       "killed": false
     },
     {
       "id": 24,
-      "name": "Royal Knight Loretta",
+      "name": "Rennala, Queen of the Full Moon",
       "killed": false
     },
     {
       "id": 25,
-      "name": "Royal Revenant",
+      "name": "Royal Knight Loretta",
       "killed": false
     },
     {
       "id": 26,
-      "name": "Spirit-Caller Snail",
+      "name": "Royal Revenant",
       "killed": false
     },
     {
       "id": 27,
+      "name": "Spirit-Caller Snail",
+      "killed": false
+    },
+    {
+      "id": 28,
       "name": "Tibia Mariner",
       "killed": false
     }
