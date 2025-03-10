@@ -1,0 +1,165 @@
+{
+  "location": "Limgrave",
+  "bosses": [
+    {
+      "id": 1,
+      "name": "Ancient Hero of Zamor",
+      "killed": false
+    },
+    {
+      "id": 2,
+      "name": "Beast of Farum Azula",
+      "killed": false
+    },
+    {
+      "id": 3,
+      "name": "Bell Bearing Hunter",
+      "killed": false
+    },
+    {
+      "id": 4,
+      "name": "Black Knife Assassin",
+      "killed": false
+    },
+    {
+      "id": 5,
+      "name": "Bloodhound Knight Darriwil",
+      "killed": false
+    },
+    {
+      "id": 6,
+      "name": "Cemetery Shade",
+      "killed": false
+    },
+    {
+      "id": 7,
+      "name": "Crucible Knight",
+      "killed": false
+    },
+    {
+      "id": 8,
+      "name": "Deathbird (Limgrave)",
+      "killed": false
+    },
+    {
+      "id": 9,
+      "name": "Deathbird (Weeping Peninsula)",
+      "killed": false
+    },
+    {
+      "id": 10,
+      "name": "Demi-Human Chief",
+      "killed": false
+    },
+    {
+      "id": 11,
+      "name": "Erdtree Avatar",
+      "killed": false
+    },
+    {
+      "id": 12,
+      "name": "Erdtree Burial Watchdog (Stormfoot Catacombs)",
+      "killed": false
+    },
+    {
+      "id": 13,
+      "name": "Erdtree Burial Watchdog (Impaler's Catacombs)",
+      "killed": false
+    },
+    {
+      "id": 14,
+      "name": "Flying Dragon Agheel",
+      "killed": false
+    },
+    {
+      "id": 15,
+      "name": "Godrick the Grafted",
+      "killed": false
+    },
+    {
+      "id": 16,
+      "name": "Grafted Scion",
+      "killed": false
+    },
+    {
+      "id": 17,
+      "name": "Grave Warden Duelist",
+      "killed": false
+    },
+    {
+      "id": 18,
+      "name": "Guardian Golem",
+      "killed": false
+    },
+    {
+      "id": 19,
+      "name": "Leonine Misbegotten",
+      "killed": false
+    },
+    {
+      "id": 20,
+      "name": "Lion Guardian",
+      "killed": false
+    },
+    {
+      "id": 21,
+      "name": "Mad Pumpkin Head",
+      "killed": false
+    },
+    {
+      "id": 22,
+      "name": "Margit, the Fell Omen",
+      "killed": false
+    },
+    {
+      "id": 23,
+      "name": "Miranda the Blighted Bloom",
+      "killed": false
+    },
+    {
+      "id": 24,
+      "name": "Night's Cavalry (2)",
+      "killed": false
+    },
+    {
+      "id": 25,
+      "name": "Patches",
+      "killed": false
+    },
+    {
+      "id": 26,
+      "name": "Runebear",
+      "killed": false
+    },
+    {
+      "id": 27,
+      "name": "Scaly Misbegotten",
+      "killed": false
+    },
+    {
+      "id": 28,
+      "name": "Soldier of Godrick",
+      "killed": false
+    },
+    {
+      "id": 29,
+      "name": "Stonedigger Troll",
+      "killed": false
+    },
+    {
+      "id": 30,
+      "name": "Tibia Mariner",
+      "killed": false
+    },
+    {
+      "id": 31,
+      "name": "Tree Sentinel",
+      "killed": false
+    },
+    {
+      "id": 32,
+      "name": "Ulcerated Tree Spirit",
+      "killed": false
+    }
+  ]
+}
