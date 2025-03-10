@@ -37,9 +37,10 @@
             cursor: pointer;
             padding: 10px;
             outline: none; /* Убираем стандартный фокус */
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: 1fr 200px 100px; /* Фиксируем ширину столбцов для выравнивания */
             align-items: center;
+            gap: 10px;
         }
         .location details[open] summary {
             border-bottom: 1px solid #444; /* Линия под заголовком при открытии */
@@ -75,7 +76,6 @@
             background-color: #333;
             border-radius: 5px;
             overflow: hidden;
-            margin-left: 10px;
             display: inline-block;
             vertical-align: middle;
         }
@@ -86,8 +86,8 @@
         }
         .progress-text {
             font-size: 14px;
-            margin-left: 10px;
             color: #ccc;
+            text-align: right;
         }
     </style>
 </head>
@@ -188,8 +188,11 @@
 
             // Добавляем обработчики событий для чекбоксов
             document.querySelectorAll('.boss-item input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('click', (event) => {
+                    event.stopPropagation(); // Предотвращаем распространение события click
+                });
                 checkbox.addEventListener('change', (event) => {
-                    event.stopPropagation(); // Предотвращаем сворачивание details
+                    event.stopPropagation(); // Предотвращаем распространение события change
                     const locationName = checkbox.getAttribute('data-location');
                     const bossId = parseInt(checkbox.getAttribute('data-boss-id'));
                     toggleBoss(locationName, bossId);
