@@ -35,6 +35,7 @@
         .search-container {
             display: flex;
             align-items: center;
+            position: relative;
         }
         .search-container input {
             padding: 5px;
@@ -43,6 +44,42 @@
             border: 1px solid #444;
             color: #fff;
             border-radius: 5px;
+            margin-right: 10px;
+        }
+        .filter-button {
+            padding: 5px 10px;
+            background-color: #ffcc00;
+            color: #1a1a1a;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .filter-button:hover {
+            background-color: #e6b800;
+        }
+        .filter-menu {
+            display: none;
+            position: absolute;
+            top: 35px;
+            left: 0;
+            background-color: #333;
+            border: 1px solid #444;
+            border-radius: 5px;
+            padding: 10px;
+            z-index: 1001;
+        }
+        .filter-menu.open {
+            display: block;
+        }
+        .filter-menu label {
+            display: block;
+            color: #ccc;
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+        .filter-menu input[type="radio"] {
+            margin-right: 5px;
         }
         .stats {
             font-size: 18px;
@@ -51,7 +88,7 @@
         .boss-list {
             max-width: 600px;
             margin: 0 auto;
-            padding-top: 80px; /* Увеличили отступ сверху из-за панельки */
+            padding-top: 80px;
         }
         .location {
             margin-bottom: 10px;
@@ -87,24 +124,10 @@
             border-bottom: 1px solid #444;
         }
         .boss-item.hidden {
-            display: none; /* Скрываем элементы при фильтрации или поиске */
+            display: none;
         }
         .boss-item input[type="checkbox"] {
             margin-right: 10px;
-        }
-        .filters {
-            max-width: 600px;
-            margin: 20px auto 10px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-        .filters label {
-            color: #ccc;
-            cursor: pointer;
-        }
-        .filters input[type="radio"] {
-            margin-right: 5px;
         }
         .error {
             color: #ff4444;
@@ -134,14 +157,15 @@
     <div class="header">
         <div class="search-container">
             <input type="text" id="search" placeholder="Поиск босса...">
+            <button class="filter-button">Фильтр</button>
+            <div class="filter-menu">
+                <label><input type="radio" name="filter" value="all" checked> Все</label>
+                <label><input type="radio" name="filter" value="killed"> Убитые</label>
+                <label><input type="radio" name="filter" value="not-killed"> Неубитые</label>
+            </div>
         </div>
         <h1>Elden Ring Boss Tracker</h1>
         <div class="stats" id="stats"></div>
-    </div>
-    <div class="filters">
-        <label><input type="radio" name="filter" value="all" checked> Все</label>
-        <label><input type="radio" name="filter" value="killed"> Убитые</label>
-        <label><input type="radio" name="filter" value="not-killed"> Неубитые</label>
     </div>
     <div class="boss-list" id="bossList"></div>
 
@@ -172,8 +196,8 @@
         }
 
         let bossesData = loadBosses();
-        let filter = 'all'; // Текущий фильтр
-        let searchQuery = ''; // Текущий запрос поиска
+        let filter = 'all';
+        let searchQuery = '';
 
         async function fetchBossesData() {
             try {
@@ -207,9 +231,9 @@
         }
 
         function getProgressColor(percentage) {
-            if (percentage <= 33) return '#ff4444'; // Красный
-            if (percentage <= 66) return '#ffcc00'; // Жёлтый
-            return '#00cc00'; // Зелёный
+            if (percentage <= 33) return '#ff4444';
+            if (percentage <= 66) return '#ffcc00';
+            return '#00cc00';
         }
 
         function renderBossList() {
@@ -243,17 +267,18 @@
                 bossList.appendChild(locationDiv);
             });
             updateStats();
-            applyFiltersAndSearch(); // Применяем фильтры и поиск после рендеринга
+            applyFiltersAndSearch();
         }
 
         function updateBossItem(locationName, bossId) {
             const location = bossesData.find(loc => loc.location === locationName);
+            const boss = location.bosses.find(b => b.id === bossId);
             const totalBosses = location.bosses.length;
-            const killedBosses = location.bosses.filter(boss => boss.killed).length;
+            const killedBosses = location.bosses.filter(b => b.killed).length;
             const completionPercentage = ((killedBosses / totalBosses) * 100).toFixed(2);
             const progressColor = getProgressColor(completionPercentage);
 
-            // Обновляем прогресс-бар и текст для локации
+            // Обновляем прогресс-бар и текст
             const locationDiv = document.querySelector(`.location-header[data-location="${locationName}"]`);
             const progressBar = locationDiv.querySelector('.progress-bar');
             const progressText = locationDiv.querySelector('.progress-text');
@@ -262,9 +287,9 @@
             progressText.textContent = `${killedBosses}/${totalBosses} (${completionPercentage}%)`;
             progressText.style.color = progressColor;
 
-            // Обновляем чекбокс
+            // Обновляем чекбокс на основе данных
             const checkbox = document.querySelector(`.boss-item input[data-location="${locationName}"][data-boss-id="${bossId}"]`);
-            checkbox.checked = !checkbox.checked;
+            checkbox.checked = boss.killed;
 
             updateStats();
             applyFiltersAndSearch();
@@ -319,7 +344,6 @@
                     }
                 });
 
-                // Скрываем локацию, если нет видимых боссов
                 location.style.display = hasVisibleBosses ? 'block' : 'none';
             });
         }
@@ -342,12 +366,27 @@
                 });
             });
 
+            // Обработчик для кнопки фильтра
+            const filterButton = document.querySelector('.filter-button');
+            const filterMenu = document.querySelector('.filter-menu');
+            filterButton.addEventListener('click', () => {
+                filterMenu.classList.toggle('open');
+            });
+
             // Обработчик для фильтров
-            document.querySelectorAll('.filters input[type="radio"]').forEach(radio => {
+            document.querySelectorAll('.filter-menu input[type="radio"]').forEach(radio => {
                 radio.addEventListener('change', (event) => {
                     filter = event.target.value;
                     applyFiltersAndSearch();
+                    filterMenu.classList.remove('open'); // Закрываем меню после выбора
                 });
+            });
+
+            // Закрытие меню при клике вне его
+            document.addEventListener('click', (event) => {
+                if (!filterButton.contains(event.target) && !filterMenu.contains(event.target)) {
+                    filterMenu.classList.remove('open');
+                }
             });
 
             // Обработчик для поиска
