@@ -2,12 +2,12 @@
   "location": "Lake of Rot",
   "bosses": [
     {
-      "id": 1,
+      "id": 156,
       "name": "Astel, Naturalborn of the Void",
       "killed": false
     },
     {
-      "id": 2,
+      "id": 157,
       "name": "Dragonkin Soldier",
       "killed": false
     } 
