@@ -1,1 +1,15 @@
-
+{
+  "location": "Leyndell, capital of Ash",
+  "bosses": [
+    {
+      "id": 1,
+      "name": "Sir Gideon Ofnir, the All-Knowing",
+      "killed": false
+    },
+    {
+      "id": 2,
+      "name": "Godfrey, First Elden Lord (Hoarah Loux)",
+      "killed": false
+    } 
+  ]
+}
