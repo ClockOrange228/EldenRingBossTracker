@@ -2,77 +2,77 @@
   "location": "Mountaintops of the Giants",
   "bosses": [
     {
-      "id": 1,
+      "id": 126,
       "name": "Ancient Hero of Zamor",
       "killed": false
     },
     {
-      "id": 2,
+      "id": 127,
       "name": "Astel, Stars of Darkness",
       "killed": false
     },
     {
-      "id": 3,
+      "id": 128,
       "name": "Black Blade Kindred",
       "killed": false
     },
     {
-      "id": 4,
+      "id": 129,
       "name": "Borealis the Freezing Fog",
       "killed": false
     },
     {
-      "id": 5,
+      "id": 130,
       "name": "Commander Niall",
       "killed": false
     },
     {
-      "id": 6,
+      "id": 131,
       "name": "Death Rite Bird (Central Mountaintops of the Giants)",
       "killed": false
     },
     {
-      "id": 7,
+      "id": 132,
       "name": "Death Rite Bird (West Mountaintops of the Giants)",
       "killed": false
     },
     {
-      "id": 8,
+      "id": 133,
       "name": "Erdtree Avatar",
       "killed": false
     },
     {
-      "id": 9,
+      "id": 134,
       "name": "Fire Giant",
       "killed": false
     },
     {
-      "id": 10,
+      "id": 135,
       "name": "Godskin Apostle & Godskin Noble",
       "killed": false
     },
     {
-      "id": 11,
+      "id": 136,
       "name": "Great Wyrm Theodorix",
       "killed": false
     },
     {
-      "id": 12,
+      "id": 137,
       "name": "Misbegotten Crusader",
       "killed": false
     },
     {
-      "id": 13,
+      "id": 138,
       "name": "Tibia Mariner",
       "killed": false
     },
     {
-      "id": 14,
+      "id": 139,
       "name": "Ulcerated Tree Spirit",
       "killed": false
     },
     {
-      "id": 15,
+      "id": 140,
       "name": "Vyke, Knight of the Roundtable",
       "killed": false
     }
