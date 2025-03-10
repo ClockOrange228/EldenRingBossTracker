@@ -372,7 +372,7 @@
                 sum + location.bosses.filter(boss => boss.killed).length, 0);
             const completionPercentage = ((killedBosses / totalBosses) * 100).toFixed(2);
             const stats = document.getElementById('stats');
-            stats.textContent = `Боссы: ${killedBosses}/${totalBosses} (${completionPercentage}%)`;
+            stats.textContent = `Bosses: ${killedBosses}/${totalBosses} (${completionPercentage}%)`;
         }
 
         function applyFiltersAndSearch() {
