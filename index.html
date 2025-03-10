@@ -138,7 +138,7 @@
                         <div class="bosses-container">
                             ${location.bosses.map(boss => `
                                 <div class="boss-item">
-                                    <input type="checkbox" ${boss.killed ? 'checked' : ''} onchange="toggleBoss('${location.location}', ${boss.id})">
+                                    <input type="checkbox" data-location="${location.location}" data-boss-id="${boss.id}" ${boss.killed ? 'checked' : ''}>
                                     <span>${boss.name}</span>
                                 </div>
                             `).join('')}
@@ -147,6 +147,17 @@
                 `;
                 bossList.appendChild(locationDiv);
             });
+
+            // Добавляем обработчики событий для чекбоксов
+            document.querySelectorAll('.boss-item input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', (event) => {
+                    event.stopPropagation(); // Предотвращаем сворачивание details
+                    const locationName = checkbox.getAttribute('data-location');
+                    const bossId = parseInt(checkbox.getAttribute('data-boss-id'));
+                    toggleBoss(locationName, bossId);
+                });
+            });
+
             updateStats();
         }
 
