@@ -268,7 +268,10 @@
                                 if (!response.ok) {
                                     throw new Error(`Не удалось загрузить ${file}: ${response.status}`);
                                 }
-                                return response.json();
+                                return response.json().then(data => {
+                                    console.log(`Успешно загружен файл: ${file}, Локация: ${data.location}, Боссов: ${data.bosses.length}`);
+                                    return data;
+                                });
                             })
                             .catch(error => {
                                 console.error(`Ошибка загрузки ${file}:`, error);
@@ -279,7 +282,10 @@
                     if (bossesData.length === 0) {
                         throw new Error('Не удалось загрузить ни один файл с боссами!');
                     }
+                    console.log(`Всего загружено локаций: ${bossesData.length}`);
                     saveBosses(bossesData);
+                } else {
+                    console.log(`Загружено локаций из localStorage: ${bossesData.length}`);
                 }
                 renderBossList();
                 setupEventListeners();
@@ -299,8 +305,9 @@
         function renderBossList() {
             const bossList = document.getElementById('bossList');
             bossList.innerHTML = '';
+            console.log('Список локаций для рендеринга:', bossesData.map(loc => loc.location));
             bossesData.forEach(location => {
-                console.log(`Location: ${location.location}, Total Bosses in Data: ${location.bosses.length}`);
+                console.log(`Рендеринг локации: ${location.location}, Total Bosses in Data: ${location.bosses.length}`);
                 const totalBosses = location.bosses.length;
                 const killedBosses = location.bosses.filter(boss => boss.killed).length;
                 const completionPercentage = ((killedBosses / totalBosses) * 100).toFixed(2);
@@ -326,10 +333,10 @@
                     </div>
                 `;
                 bossList.appendChild(locationDiv);
-                console.log(`Location: ${location.location}, Rendered Bosses: ${locationDiv.querySelectorAll('.boss-item').length}`);
+                console.log(`Локация: ${location.location}, Rendered Bosses: ${locationDiv.querySelectorAll('.boss-item').length}`);
             });
             updateStats();
-            // applyFiltersAndSearch(); // Временно отключено для проверки всех боссов
+            applyFiltersAndSearch();
         }
 
         function updateBossItem(locationName, bossId) {
