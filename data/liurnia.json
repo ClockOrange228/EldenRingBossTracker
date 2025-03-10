@@ -2,142 +2,142 @@
   "location": "Liurnia of the Lakes",
   "bosses": [
     {
-      "id": 1,
+      "id": 34,
       "name": "Adan, Thief of Fire",
       "killed": false
     },
     {
-      "id": 2,
+      "id": 35,
       "name": "Alabaster Lord",
       "killed": false
     },
     {
-      "id": 3,
+      "id": 36,
       "name": "Alecto, Black Knife Ringleader",
       "killed": false
     },
     {
-      "id": 4,
+      "id": 37,
       "name": "Bell Bearing Hunter",
       "killed": false
     },
     {
-      "id": 5,
+      "id": 38,
       "name": "Black Knife Assassin",
       "killed": false
     },
     {
-      "id": 6,
+      "id": 39,
       "name": "Bols, Carian Knight",
       "killed": false
     },
     {
-      "id": 7,
+      "id": 40,
       "name": "Cemetery Shade",
       "killed": false
     },
     {
-      "id": 8,
+      "id": 41,
       "name": "Cleanrot Knight",
       "killed": false
     },
     {
-      "id": 9,
+      "id": 42,
       "name": "Crystalian Spear & Crystalian Staff",
       "killed": false
     },
     {
-      "id": 10,
+      "id": 43,
       "name": "Crystalian Ringblade",
       "killed": false
     },
     {
-      "id": 11,
+      "id": 44,
       "name": "Death Rite Bird",
       "killed": false
     },
     {
-      "id": 12,
+      "id": 45,
       "name": "Deathbird",
       "killed": false
     },
     {
-      "id": 13,
+      "id": 46,
       "name": "Erdtree Avatar (Liurnia Northeast)",
       "killed": false
     },
     {
-      "id": 14,
+      "id": 47,
       "name": "Erdtree Avatar (Liurnia Southwest)",
       "killed": false
     },
     {
-      "id": 15,
+      "id": 48,
       "name": "Erdtree Burial Watchdog",
       "killed": false
     },
     {
-      "id": 16,
+      "id": 49,
       "name": "Glintstone Dragon Adula",
       "killed": false
     },
     {
-      "id": 17,
+      "id": 50,
       "name": "Glintstone Dragon Smarag",
       "killed": false
     },
     {
-      "id": 18,
+      "id": 51,
       "name": "Godskin Noble",
       "killed": false
     },
     {
-      "id": 19,
+      "id": 52,
       "name": "Magma Wyrm Makar",
       "killed": false
     },
     {
-      "id": 20,
+      "id": 53,
       "name": "Night's Cavalry",
       "killed": false
     },
       {
-      "id": 21,
+      "id": 54,
       "name": "Night's Cavalry",
       "killed": false
     },
     {
-      "id": 22,
+      "id": 55,
       "name": "Omenkiller",
       "killed": false
     },
     {
-      "id": 23,
+      "id": 56,
       "name": "Red Wolf of Radagon",
       "killed": false
     },
     {
-      "id": 24,
+      "id": 57,
       "name": "Rennala, Queen of the Full Moon",
       "killed": false
     },
     {
-      "id": 25,
+      "id": 58,
       "name": "Royal Knight Loretta",
       "killed": false
     },
     {
-      "id": 26,
+      "id": 59,
       "name": "Royal Revenant",
       "killed": false
     },
     {
-      "id": 27,
+      "id": 60,
       "name": "Spirit-Caller Snail",
       "killed": false
     },
     {
-      "id": 28,
+      "id": 61,
       "name": "Tibia Mariner",
       "killed": false
     }
