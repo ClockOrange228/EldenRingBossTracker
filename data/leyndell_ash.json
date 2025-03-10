@@ -2,17 +2,17 @@
   "location": "Leyndell, capital of Ash",
   "bosses": [
     {
-      "id": 1,
+      "id": 165,
       "name": "Sir Gideon Ofnir, the All-Knowing",
       "killed": false
     },
     {
-      "id": 2,
+      "id": 166,
       "name": "Godfrey, First Elden Lord (Hoarah Loux)",
       "killed": false
     },
     {
-      "id": 3,
+      "id": 167,
       "name": " Radagon of the Golden Order + Elden Beast",
       "killed": false
     } 
