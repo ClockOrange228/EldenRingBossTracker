@@ -25,25 +25,31 @@
             padding-top: 100px;
         }
         .location {
-            margin-bottom: 10px; /* Уменьшили отступ между локациями */
-            border-bottom: 1px solid #444; /* Добавили разделитель между локациями */
-            padding-bottom: 10px; /* Отступ перед разделителем */
+            margin-bottom: 10px;
+            border-bottom: 1px solid #444;
+            padding-bottom: 10px;
         }
         .location:last-child {
-            border-bottom: none; /* Убираем разделитель у последней локации */
+            border-bottom: none;
         }
-        .location summary {
+        .location-header {
             color: #ffcc00;
             cursor: pointer;
             padding: 10px;
-            outline: none; /* Убираем стандартный фокус */
             display: grid;
-            grid-template-columns: 1fr 200px 100px; /* Фиксируем ширину столбцов для выравнивания */
+            grid-template-columns: 1fr 200px 100px;
             align-items: center;
             gap: 10px;
         }
-        .location details[open] summary {
-            border-bottom: 1px solid #444; /* Линия под заголовком при открытии */
+        .location-header:hover {
+            background-color: rgba(255, 204, 0, 0.1); /* Подсветка при наведении */
+        }
+        .bosses-container {
+            display: none; /* Скрыт по умолчанию */
+            border-top: 1px solid #444; /* Линия под заголовком, когда список открыт */
+        }
+        .bosses-container.open {
+            display: block; /* Показываем, когда открыт */
         }
         .boss-item {
             display: flex;
@@ -165,34 +171,36 @@
                 const locationDiv = document.createElement('div');
                 locationDiv.className = 'location';
                 locationDiv.innerHTML = `
-                    <details>
-                        <summary>
-                            <span>${location.location}</span>
-                            <div class="progress-bar-container">
-                                <div class="progress-bar" style="width: ${completionPercentage}%"></div>
-                            </div>
-                            <span class="progress-text">${killedBosses}/${totalBosses} (${completionPercentage}%)</span>
-                        </summary>
-                        <div class="bosses-container">
-                            ${location.bosses.map(boss => `
-                                <div class="boss-item">
-                                    <input type="checkbox" data-location="${location.location}" data-boss-id="${boss.id}" ${boss.killed ? 'checked' : ''}>
-                                    <span>${boss.name}</span>
-                                </div>
-                            `).join('')}
+                    <div class="location-header" data-location="${location.location}">
+                        <span>${location.location}</span>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" style="width: ${completionPercentage}%"></div>
                         </div>
-                    </details>
+                        <span class="progress-text">${killedBosses}/${totalBosses} (${completionPercentage}%)</span>
+                    </div>
+                    <div class="bosses-container">
+                        ${location.bosses.map(boss => `
+                            <div class="boss-item">
+                                <input type="checkbox" data-location="${location.location}" data-boss-id="${boss.id}" ${boss.killed ? 'checked' : ''}>
+                                <span>${boss.name}</span>
+                            </div>
+                        `).join('')}
+                    </div>
                 `;
                 bossList.appendChild(locationDiv);
             });
 
-            // Добавляем обработчики событий для чекбоксов
-            document.querySelectorAll('.boss-item input[type="checkbox"]').forEach(checkbox => {
-                checkbox.addEventListener('click', (event) => {
-                    event.stopPropagation(); // Предотвращаем распространение события click
+            // Добавляем обработчики для заголовков локаций
+            document.querySelectorAll('.location-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const container = header.nextElementSibling;
+                    container.classList.toggle('open');
                 });
+            });
+
+            // Добавляем обработчики для чекбоксов
+            document.querySelectorAll('.boss-item input[type="checkbox"]').forEach(checkbox => {
                 checkbox.addEventListener('change', (event) => {
-                    event.stopPropagation(); // Предотвращаем распространение события change
                     const locationName = checkbox.getAttribute('data-location');
                     const bossId = parseInt(checkbox.getAttribute('data-boss-id'));
                     toggleBoss(locationName, bossId);
