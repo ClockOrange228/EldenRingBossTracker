@@ -31,6 +31,8 @@
             color: #ffcc00;
             margin: 0;
             font-size: 24px;
+            flex-grow: 1; /* Растягивает заголовок, но не даёт ему двигаться */
+            text-align: center; /* Центрирует заголовок */
         }
         .search-container {
             display: flex;
@@ -44,7 +46,7 @@
             border: 1px solid #444;
             color: #fff;
             border-radius: 5px;
-            margin-right: 10px;
+            margin-left: 10px; /* Отступ слева от кнопки фильтра */
         }
         .filter-button {
             padding: 5px 10px;
@@ -84,6 +86,10 @@
         .stats {
             font-size: 18px;
             color: #ccc;
+            width: 200px; /* Фиксированная ширина для стабильности */
+            text-align: right;
+            padding-right: 20px; /* Отступ справа, чтобы не перекрывался скроллбаром */
+            flex-shrink: 0; /* Предотвращает сжатие */
         }
         .boss-list {
             max-width: 600px;
@@ -156,8 +162,8 @@
 <body>
     <div class="header">
         <div class="search-container">
-            <input type="text" id="search" placeholder="Search target...">
             <button class="filter-button">Filter</button>
+            <input type="text" id="search" placeholder="Search target...">
             <div class="filter-menu">
                 <label><input type="radio" name="filter" value="all" checked> All</label>
                 <label><input type="radio" name="filter" value="killed"> Dead</label>
@@ -183,9 +189,7 @@
             'data/farum_azula.json',
             'data/forbidden_lands.json',
             'data/nokron.json',
-            'data/deeproot_depths.json',
-            'data/lake_of_rot.json',
-            'data/consecrated_snowfield.json'
+            'data/deeproot_depths.json'
         ];
 
         function loadBosses() {
@@ -319,7 +323,7 @@
                 sum + location.bosses.filter(boss => boss.killed).length, 0);
             const completionPercentage = ((killedBosses / totalBosses) * 100).toFixed(2);
             const stats = document.getElementById('stats');
-            stats.textContent = `Bosses: ${killedBosses}/${totalBosses} (${completionPercentage}%)`;
+            stats.textContent = `Боссы: ${killedBosses}/${totalBosses} (${completionPercentage}%)`;
         }
 
         function applyFiltersAndSearch() {
