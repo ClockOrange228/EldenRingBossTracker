@@ -1,1 +1,38 @@
-
+{
+  "location": "Caelid",
+  "bosses": [
+    {
+      "id": 1,
+      "name": "Battlemage Hugues",
+      "killed": false
+    },
+    {
+      "id": 2,
+      "name": "Beastman of Farum Azula",
+      "killed": false
+    },
+    {
+      "id": 3,
+      "name": "Bell Bearing Hunter",
+      "killed": false
+    },
+    {
+      "id": 4,
+      "name": "Black Blade Kindred",
+      "killed": false
+    },
+    {
+      "id": 5,
+      "name": "Cemetery Shade",
+      "killed": false
+    },
+    {
+      "id": 6,
+      "name": "Cleanrot Knight",
+      "killed": false
+    },
+    {
+      "id": 7,
+      "name": "Commander O'Neil",
+      "killed": false
+    }
