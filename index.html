@@ -300,6 +300,7 @@
             const bossList = document.getElementById('bossList');
             bossList.innerHTML = '';
             bossesData.forEach(location => {
+                console.log(`Location: ${location.location}, Total Bosses in Data: ${location.bosses.length}`);
                 const totalBosses = location.bosses.length;
                 const killedBosses = location.bosses.filter(boss => boss.killed).length;
                 const completionPercentage = ((killedBosses / totalBosses) * 100).toFixed(2);
@@ -325,9 +326,10 @@
                     </div>
                 `;
                 bossList.appendChild(locationDiv);
+                console.log(`Location: ${location.location}, Rendered Bosses: ${locationDiv.querySelectorAll('.boss-item').length}`);
             });
             updateStats();
-            applyFiltersAndSearch();
+            // applyFiltersAndSearch(); // Временно отключено для проверки всех боссов
         }
 
         function updateBossItem(locationName, bossId) {
