@@ -1,0 +1,8 @@
+{
+  "location": "Leyndell, Ashen Capital",
+  "bosses": [
+    {"id": 150, "name": "Elden Beast", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Elden+Beast"},
+    {"id": 151, "name": "Hoarah Loux, Warrior", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Hoarah+Loux,+Warrior"},
+    {"id": 152, "name": "Sir Gideon Ofnir, the All-Knowing", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Sir+Gideon+Ofnir,+the+All-Knowing"}
+  ]
+}
