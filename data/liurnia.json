@@ -1,145 +1,33 @@
 {
   "location": "Liurnia of the Lakes",
   "bosses": [
-    {
-      "id": 34,
-      "name": "Adan, Thief of Fire",
-      "killed": false
-    },
-    {
-      "id": 35,
-      "name": "Alabaster Lord",
-      "killed": false
-    },
-    {
-      "id": 36,
-      "name": "Alecto, Black Knife Ringleader",
-      "killed": false
-    },
-    {
-      "id": 37,
-      "name": "Bell Bearing Hunter",
-      "killed": false
-    },
-    {
-      "id": 38,
-      "name": "Black Knife Assassin",
-      "killed": false
-    },
-    {
-      "id": 39,
-      "name": "Bols, Carian Knight",
-      "killed": false
-    },
-    {
-      "id": 40,
-      "name": "Cemetery Shade",
-      "killed": false
-    },
-    {
-      "id": 41,
-      "name": "Cleanrot Knight",
-      "killed": false
-    },
-    {
-      "id": 42,
-      "name": "Crystalian Spear & Crystalian Staff",
-      "killed": false
-    },
-    {
-      "id": 43,
-      "name": "Crystalian Ringblade",
-      "killed": false
-    },
-    {
-      "id": 44,
-      "name": "Death Rite Bird",
-      "killed": false
-    },
-    {
-      "id": 45,
-      "name": "Deathbird",
-      "killed": false
-    },
-    {
-      "id": 46,
-      "name": "Erdtree Avatar (Liurnia Northeast)",
-      "killed": false
-    },
-    {
-      "id": 47,
-      "name": "Erdtree Avatar (Liurnia Southwest)",
-      "killed": false
-    },
-    {
-      "id": 48,
-      "name": "Erdtree Burial Watchdog",
-      "killed": false
-    },
-    {
-      "id": 49,
-      "name": "Glintstone Dragon Adula",
-      "killed": false
-    },
-    {
-      "id": 50,
-      "name": "Glintstone Dragon Smarag",
-      "killed": false
-    },
-    {
-      "id": 51,
-      "name": "Godskin Noble",
-      "killed": false
-    },
-    {
-      "id": 52,
-      "name": "Magma Wyrm Makar",
-      "killed": false
-    },
-    {
-      "id": 53,
-      "name": "Night's Cavalry",
-      "killed": false
-    },
-      {
-      "id": 54,
-      "name": "Night's Cavalry",
-      "killed": false
-    },
-    {
-      "id": 55,
-      "name": "Omenkiller",
-      "killed": false
-    },
-    {
-      "id": 56,
-      "name": "Red Wolf of Radagon",
-      "killed": false
-    },
-    {
-      "id": 57,
-      "name": "Rennala, Queen of the Full Moon",
-      "killed": false
-    },
-    {
-      "id": 58,
-      "name": "Royal Knight Loretta",
-      "killed": false
-    },
-    {
-      "id": 59,
-      "name": "Royal Revenant",
-      "killed": false
-    },
-    {
-      "id": 60,
-      "name": "Spirit-Caller Snail",
-      "killed": false
-    },
-    {
-      "id": 61,
-      "name": "Tibia Mariner",
-      "killed": false
-    }
+    {"id": 34, "name": "Adan, Thief of Fire", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Adan+Thief+of+Fire"},
+    {"id": 35, "name": "Alabaster Lord", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Alabaster+Lord"},
+    {"id": 36, "name": "Alecto, Black Knife Ringleader", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Alecto+Black+Knife+Ringleader"},
+    {"id": 37, "name": "Bell Bearing Hunter", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Bell+Bearing+Hunter"},
+    {"id": 38, "name": "Black Knife Assassin", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Black+Knife+Assassin"},
+    {"id": 39, "name": "Bloodhound Knight", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Bloodhound+Knight"},
+    {"id": 40, "name": "Bols, Carian Knight", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Bols,+Carian+Knight"},
+    {"id": 41, "name": "Cemetery Shade", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Cemetery+Shade"},
+    {"id": 42, "name": "Cleanrot Knight", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Cleanrot+Knight"},
+    {"id": 43, "name": "Crystalian", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Crystalian"},
+    {"id": 44, "name": "Crystalian Spear & Crystalian Staff", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Crystalian"},
+    {"id": 45, "name": "Death Rite Bird", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Death+Rite+Bird"},
+    {"id": 46, "name": "Deathbird", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Deathbird"},
+    {"id": 47, "name": "Erdtree Avatar", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Erdtree+Avatar"},
+    {"id": 48, "name": "Erdtree Burial Watchdog", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Erdtree+Burial+Watchdog"},
+    {"id": 49, "name": "Glintstone Dragon Adula", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Glintstone+Dragon+Adula"},
+    {"id": 50, "name": "Glintstone Dragon Smarag", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Glintstone+Dragon+Smarag"},
+    {"id": 51, "name": "Godskin Noble", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Godskin+Noble"},
+    {"id": 52, "name": "Magma Wyrm", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Magma+Wyrm"},
+    {"id": 53, "name": "Night's Cavalry", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Night's+Cavalry"},
+    {"id": 54, "name": "Night's Cavalry", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Night's+Cavalry"},
+    {"id": 55, "name": "Nox Swordstress & Nox Priest", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Nox+Swordstress+&+Nox+Priest"},
+    {"id": 56, "name": "Omenkiller", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Omenkiller"},
+    {"id": 57, "name": "Red Wolf of Radagon", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Red+Wolf+of+Radagon"},
+    {"id": 58, "name": "Rennala, Queen of the Full Moon", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Rennala,+Queen+of+the+Full+Moon"},
+    {"id": 59, "name": "Royal Knight Loretta", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Royal+Knight+Loretta"},
+    {"id": 60, "name": "Spirit-Caller Snail", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Spirit-Caller+Snail"},
+    {"id": 61, "name": "Tibia Mariner", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Tibia+Mariner"}
   ]
 }
