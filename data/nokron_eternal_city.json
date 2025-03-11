@@ -1,0 +1,9 @@
+{
+  "location": "Nokron, Eternal City",
+  "bosses": [
+    {"id": 139, "name": "Mimic Tear", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Mimic+Tear"},
+    {"id": 140, "name": "Regal Ancestor Spirit", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Regal+Ancestor+Spirit"},
+    {"id": 141, "name": "Valiant Gargoyle", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Valiant+Gargoyle"},
+    {"id": 142, "name": "Valiant Gargoyle", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Valiant+Gargoyle"}
+  ]
+}
