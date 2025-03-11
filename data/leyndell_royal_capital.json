@@ -2,6 +2,7 @@
   "location": "Leyndell, Royal Capital",
   "bosses": [
     {"id": 147, "name": "Esgar, Priest of Blood", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Esgar,+Priest+of+Blood"},
+    {"id": 93,  "name": "Fell Twins", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Fell+Twins"},
     {"id": 148, "name": "Godfrey, First Elden Lord", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Godfrey,+First+Elden+Lord"},
     {"id": 149, "name": "Morgott, the Omen King", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Morgott+the+Omen+King"}
   ]
