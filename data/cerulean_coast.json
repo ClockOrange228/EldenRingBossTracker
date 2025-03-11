@@ -1,0 +1,7 @@
+{
+  "location": "Cerulean Coast (SoTE)",
+  "bosses": [
+    {"id": 164, "name": "Dancer of Ranah", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Dancer+of+Ranah"},
+    {"id": 165, "name": "Ghostflame Dragon", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Ghostflame+Dragon"}
+  ]
+}
