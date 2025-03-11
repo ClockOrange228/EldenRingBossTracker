@@ -1,10 +1,6 @@
 {
   "location": "Ainsel River",
   "bosses": [
-    {
-      "id": 144,
-      "name": "Dragonkin Soldier of Nokstella",
-      "killed": false
-    }
+    {"id": 133, "name": "Dragonkin Soldier", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Dragonkin+Soldier+of+Nokstella"}
   ]
 }
