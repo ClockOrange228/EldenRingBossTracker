@@ -1,90 +1,27 @@
 {
   "location": "Altus Plateau",
   "bosses": [
-    {
-      "id": 100,
-      "name": "Ancient Hero of Zamor",
-      "killed": false
-    },
-    {
-      "id": 101,
-      "name": "Black Knife Assassin (Sage's Cave)",
-      "killed": false
-    },
-    {
-      "id": 102,
-      "name": "Black Knife Assassin (Sainted Hero's Grave)",
-      "killed": false
-    },
-    {
-      "id": 103,
-      "name": "Crystalian Spear & Crystalian Ringblade",
-      "killed": false
-    },
-    {
-      "id": 104,
-      "name": "Demi-Human Queen Gilika",
-      "killed": false
-    },
-    {
-      "id": 105,
-      "name": "Draconic Tree Sentinel",
-      "killed": false
-    },
-    {
-      "id": 106,
-      "name": "Elemer of the Briar",
-      "killed": false
-    },
-    {
-      "id": 107,
-      "name": "Fallingstar Beast",
-      "killed": false
-    },
-    {
-      "id": 108,
-      "name": "Godefroy The Grafted",
-      "killed": false
-    },
-    {
-      "id": 109,
-      "name": "Godskin Apostle",
-      "killed": false
-    },
-    {
-      "id": 110,
-      "name": "Grave Warden Duelist",
-      "killed": false
-    },
-    {
-      "id": 111,
-      "name": "Necromancer Garris",
-      "killed": false
-    },
-    {
-      "id": 112,
-      "name": "Sanguine Noble",
-      "killed": false
-    },
-    {
-      "id": 113,
-      "name": "Stonedigger Troll",
-      "killed": false
-    },
-    {
-      "id": 114,
-      "name": "Tibia Mariner",
-      "killed": false
-    },
-    {
-      "id": 115,
-      "name": "Tree Sentinel Duo",
-      "killed": false
-    },
-    {
-      "id": 116,
-      "name": "Wormface",
-      "killed": false
-    }
+    {"id": 84, "name": "Ancient Hero of Zamor", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Ancient+Hero+of+Zamor"},
+    {"id": 85, "name": "Bell Bearing Hunter", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Bell+Bearing+Hunter"},
+    {"id": 86, "name": "Black Knife Assassin", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Black+Knife+Assassin"},
+    {"id": 87, "name": "Crystalian Spear & Crystalian Ringblade", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Crystalian"},
+    {"id": 88, "name": "Demi-Human Queen Gilika", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Demi-Human+Queen+Gilika"},
+    {"id": 89, "name": "Draconic Tree Sentinel", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Draconic+Tree+Sentinel"},
+    {"id": 90, "name": "Elemer of the Briar", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Elemer+of+the+Briar"},
+    {"id": 91, "name": "Erdtree Burial Watchdog", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Erdtree+Burial+Watchdog"},
+    {"id": 92, "name": "Fallingstar Beast", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Fallingstar+Beast"},
+    {"id": 93, "name": "Fell Twins", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Fell+Twins"},
+    {"id": 94, "name": "Godefroy the Grafted", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Godefroy+the+Grafted"},
+    {"id": 95, "name": "Godskin Apostle", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Godskin+Apostle"},
+    {"id": 96, "name": "Grave Warden Duelist", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Grave+Warden+Duelist"},
+    {"id": 97, "name": "Miranda & Omenkiller", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Omenkiller+and+Miranda,+the+Blighted+Bloom"},
+    {"id": 98, "name": "Necromancer Garris", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Necromancer+Garris"},
+    {"id": 99, "name": "Night's Cavalry", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Night's+Cavalry"},
+    {"id": 100, "name": "Perfumer Tricia & Misbegotten Warrior", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Perfumer+Tricia"},
+    {"id": 101, "name": "Sanguine Noble", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Sanguine+Noble"},
+    {"id": 102, "name": "Stonedigger Troll", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Stonedigger+Troll"},
+    {"id": 103, "name": "Tree Sentinel", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Tree+Sentinel"},
+    {"id": 104, "name": "Tree Sentinel", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Tree+Sentinel"},
+    {"id": 105, "name": "Wormface", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Wormface"}
   ]
 }
