@@ -93,7 +93,7 @@
             cursor: pointer;
             margin-bottom: 8px;
         }
-        .filter-menu input[type="radio"] {
+        .filter-menu input[type="checkbox"] {
             margin-right: 5px;
         }
         .stats {
@@ -224,9 +224,10 @@
             <button class="filter-button">Filter</button>
             <input type="text" id="search" placeholder="Search target...">
             <div class="filter-menu">
-                <label><input type="radio" name="filter" value="all" checked> All</label>
-                <label><input type="radio" name="filter" value="killed"> Dead</label>
-                <label><input type="radio" name="filter" value="not-killed"> Alive</label>
+                <label><input type="checkbox" name="filter" value="killed"> Killed</label>
+                <label><input type="checkbox" name="filter" value="not-killed"> Not Killed</label>
+                <label><input type="checkbox" name="filter" value="great-rune"> Great Rune Holders</label>
+                <label><input type="checkbox" name="filter" value="required"> Required Bosses</label>
             </div>
         </div>
         <h1>Elden Ring Boss Tracker</h1>
@@ -266,6 +267,30 @@
             'data/enir-ilim.json'
         ];
 
+        const greatRuneHolders = [
+            15,  // Godrick the Grafted
+            58,  // Rennala, Queen of the Full Moon
+            83,  // Starscourge Radahn
+            149, // Morgott, the Omen King
+            154, // Mohg, Lord of Blood
+            156, // Malenia, Blade of Miquella
+            185  // Rykard, Lord of Blasphemy
+        ];
+
+        const requiredBosses = [
+            22,  // Margit, the Fell Omen
+            15,  // Godrick the Grafted
+            57,  // Red Wolf of Radagon
+            58,  // Rennala, Queen of the Full Moon
+            83,  // Starscourge Radahn
+            148, // Godfrey, First Elden Lord
+            149, // Morgott, the Omen King
+            121, // Fire Giant
+            144, // Beast Clergyman
+            151, // Hoarah Loux, Warrior
+            150  // Elden Beast
+        ];
+
         function loadBosses() {
             const savedBosses = localStorage.getItem('bosses');
             return savedBosses ? JSON.parse(savedBosses) : null;
@@ -276,216 +301,24 @@
         }
 
         let bossesData = loadBosses();
-        let filter = 'all';
+        let filters = {
+            killed: false,
+            'not-killed': false,
+            'great-rune': false,
+            required: false
+        };
         let searchQuery = '';
 
         async function fetchBossesData() {
             try {
-                filter = 'all'; // Сбрасываем фильтр
-                searchQuery = ''; // Сбрасываем поиск
-                document.getElementById('search').value = ''; // Очищаем поле поиска
-                document.querySelector('input[name="filter"][value="all"]').checked = true; // Устанавливаем фильтр "All"
+                filters = { killed: false, 'not-killed': false, 'great-rune': false, required: false };
+                searchQuery = '';
+                document.getElementById('search').value = '';
+                document.querySelectorAll('.filter-menu input[type="checkbox"]').forEach(cb => cb.checked = false);
                 if (!bossesData) {
                     const promises = bossFiles.map(file =>
                         fetch(file)
                             .then(response => {
                                 if (!response.ok) {
                                     throw new Error(`Не удалось загрузить ${file}: ${response.status}`);
-                                }
-                                return response.json().then(data => {
-                                    console.log(`Успешно загружен файл: ${file}, Локация: ${data.location}, Боссов: ${data.bosses.length}`);
-                                    return data;
-                                });
-                            })
-                            .catch(error => {
-                                console.error(`Ошибка загрузки ${file}:`, error);
-                                return null;
-                            })
-                    );
-                    bossesData = (await Promise.all(promises)).filter(data => data !== null);
-                    if (bossesData.length === 0) {
-                        throw new Error('Не удалось загрузить ни один файл с боссами!');
-                    }
-                    console.log(`Всего загружено локаций: ${bossesData.length}`);
-                    saveBosses(bossesData);
-                } else {
-                    console.log(`Загружено локаций из localStorage: ${bossesData.length}`);
-                }
-                renderBossList();
-                setupEventListeners();
-            } catch (error) {
-                console.error('Ошибка при загрузке данных:', error);
-                const bossList = document.getElementById('bossList');
-                bossList.innerHTML = '<p class="error">Ошибка загрузки данных. Проверь консоль и пути к файлам.</p>';
-            }
-        }
-
-        function getProgressColor(percentage) {
-            if (percentage <= 33) return '#ff4444';
-            if (percentage <= 66) return '#ffcc00';
-            return '#00cc00';
-        }
-
-        function renderBossList() {
-            const bossList = document.getElementById('bossList');
-            bossList.innerHTML = '';
-            console.log('Список локаций для рендеринга:', bossesData.map(loc => loc.location));
-            bossesData.forEach(location => {
-                console.log(`Рендеринг локации: ${location.location}, Total Bosses in Data: ${location.bosses.length}`);
-                console.log(`Боссы в ${location.location}:`, location.bosses.map(b => b.name));
-                const totalBosses = location.bosses.length;
-                const killedBosses = location.bosses.filter(boss => boss.killed).length;
-                const completionPercentage = ((killedBosses / totalBosses) * 100).toFixed(2);
-                const progressColor = getProgressColor(completionPercentage);
-
-                const locationDiv = document.createElement('div');
-                locationDiv.className = 'location';
-                locationDiv.innerHTML = `
-                    <div class="location-header" data-location="${location.location}">
-                        <span>${location.location}</span>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar" style="width: ${completionPercentage}%; background-color: ${progressColor};"></div>
-                        </div>
-                        <span class="progress-text" style="color: ${progressColor}">${killedBosses}/${totalBosses} (${completionPercentage}%)</span>
-                    </div>
-                    <div class="bosses-container">
-                        ${location.bosses.map(boss => `
-                            <div class="boss-item" data-boss-id="${boss.id}">
-                                <input type="checkbox" data-location="${location.location}" data-boss-id="${boss.id}" ${boss.killed ? 'checked' : ''}>
-                                <a href="${boss.wikiLink}" target="_blank">${boss.name}</a>
-                            </div>
-                        `).join('')}
-                    </div>
-                `;
-                bossList.appendChild(locationDiv);
-                console.log(`Локация: ${location.location}, Rendered Bosses: ${locationDiv.querySelectorAll('.boss-item').length}`);
-            });
-            updateStats();
-            applyFiltersAndSearch();
-        }
-
-        function updateBossItem(locationName, bossId) {
-            const location = bossesData.find(loc => loc.location === locationName);
-            const boss = location.bosses.find(b => b.id === bossId);
-            const totalBosses = location.bosses.length;
-            const killedBosses = location.bosses.filter(b => b.killed).length;
-            const completionPercentage = ((killedBosses / totalBosses) * 100).toFixed(2);
-            const progressColor = getProgressColor(completionPercentage);
-
-            const locationDiv = document.querySelector(`.location-header[data-location="${locationName}"]`);
-            const progressBar = locationDiv.querySelector('.progress-bar');
-            const progressText = locationDiv.querySelector('.progress-text');
-            progressBar.style.width = `${completionPercentage}%`;
-            progressBar.style.backgroundColor = progressColor;
-            progressText.textContent = `${killedBosses}/${totalBosses} (${completionPercentage}%)`;
-            progressText.style.color = progressColor;
-
-            const checkbox = document.querySelector(`.boss-item input[data-location="${locationName}"][data-boss-id="${bossId}"]`);
-            checkbox.checked = boss.killed;
-
-            updateStats();
-            applyFiltersAndSearch();
-        }
-
-        function toggleBoss(locationName, bossId) {
-            bossesData = bossesData.map(location => {
-                if (location.location === locationName) {
-                    location.bosses = location.bosses.map(boss => {
-                        if (boss.id === bossId) {
-                            return { ...boss, killed: !boss.killed };
-                        }
-                        return boss;
-                    });
-                }
-                return location;
-            });
-            saveBosses(bossesData);
-            updateBossItem(locationName, bossId);
-        }
-
-        function updateStats() {
-            const totalBosses = bossesData.reduce((sum, location) => sum + location.bosses.length, 0);
-            const killedBosses = bossesData.reduce((sum, location) => 
-                sum + location.bosses.filter(boss => boss.killed).length, 0);
-            const completionPercentage = ((killedBosses / totalBosses) * 100).toFixed(2);
-            const stats = document.getElementById('stats');
-            stats.textContent = `Bosses: ${killedBosses}/${totalBosses} (${completionPercentage}%)`;
-        }
-
-        function applyFiltersAndSearch() {
-            const searchValue = searchQuery.toLowerCase();
-            console.log('Текущий фильтр:', filter);
-            console.log('Текущий поисковый запрос:', searchQuery);
-            document.querySelectorAll('.location').forEach(location => {
-                const locationName = location.querySelector('.location-header').getAttribute('data-location');
-                const bosses = bossesData.find(loc => loc.location === locationName).bosses;
-                let hasVisibleBosses = false;
-
-                location.querySelectorAll('.boss-item').forEach(item => {
-                    const bossName = item.querySelector('a').textContent.toLowerCase();
-                    const bossId = parseInt(item.getAttribute('data-boss-id'));
-                    const boss = bosses.find(b => b.id === bossId);
-                    const matchesSearch = bossName.includes(searchValue);
-                    const matchesFilter = filter === 'all' || 
-                                         (filter === 'killed' && boss.killed) || 
-                                         (filter === 'not-killed' && !boss.killed);
-
-                    if (matchesSearch && matchesFilter) {
-                        item.classList.remove('hidden');
-                        hasVisibleBosses = true;
-                    } else {
-                        item.classList.add('hidden');
-                        console.log(`Скрыт босс: ${boss.name} в локации ${locationName}. Причина: ${matchesSearch ? '' : 'не соответствует поиску'} ${matchesFilter ? '' : 'не соответствует фильтру'}`);
-                    }
-                });
-
-                location.style.display = hasVisibleBosses ? 'block' : 'none';
-            });
-        }
-
-        function setupEventListeners() {
-            document.querySelectorAll('.location-header').forEach(header => {
-                header.addEventListener('click', () => {
-                    const container = header.nextElementSibling;
-                    container.classList.toggle('open');
-                });
-            });
-
-            document.querySelectorAll('.boss-item input[type="checkbox"]').forEach(checkbox => {
-                checkbox.addEventListener('change', (event) => {
-                    const locationName = checkbox.getAttribute('data-location');
-                    const bossId = parseInt(checkbox.getAttribute('data-boss-id'));
-                    toggleBoss(locationName, bossId);
-                });
-            });
-
-            const filterButton = document.querySelector('.filter-button');
-            const filterMenu = document.querySelector('.filter-menu');
-            filterButton.addEventListener('click', () => {
-                filterMenu.classList.toggle('open');
-            });
-
-            document.querySelectorAll('.filter-menu input[type="radio"]').forEach(radio => {
-                radio.addEventListener('change', (event) => {
-                    filter = event.target.value;
-                    applyFiltersAndSearch();
-                    filterMenu.classList.remove('open');
-                });
-            });
-
-            document.addEventListener('click', (event) => {
-                if (!filterButton.contains(event.target) && !filterMenu.contains(event.target)) {
-                    filterMenu.classList.remove('open');
-                }
-            });
-
-            document.getElementById('search').addEventListener('input', (event) => {
-                searchQuery = event.target.value;
-                applyFiltersAndSearch();
-            });
-        }
-
-        fetchBossesData();
-    </script>
-</body>
-</html>
+                               
