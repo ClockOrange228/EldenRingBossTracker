@@ -1,130 +1,27 @@
 {
   "location": "Caelid",
   "bosses": [
-    {
-      "id": 62,
-      "name": "Battlemage Hugues",
-      "killed": false
-    },
-    {
-      "id": 63,
-      "name": "Beastman of Farum Azula",
-      "killed": false
-    },
-    {
-      "id": 64,
-      "name": "Bell Bearing Hunter",
-      "killed": false
-    },
-    {
-      "id": 65,
-      "name": "Black Blade Kindred",
-      "killed": false
-    },
-    {
-      "id": 66,
-      "name": "Cemetery Shade",
-      "killed": false
-    },
-    {
-      "id": 67,
-      "name": "Cleanrot Knight",
-      "killed": false
-    },
-    {
-      "id": 68,
-      "name": "Commander O'Neil",
-      "killed": false
-    },
-    {
-      "id": 69,
-      "name": "Crucible Knight & Misbegotten Warrior",
-      "killed": false
-    },
-    {
-      "id": 70,
-      "name": "Death Rite Bird",
-      "killed": false
-    },
-    {
-      "id": 71,
-      "name": "Decaying Ekzykes",
-      "killed": false
-    },
-    {
-      "id": 72,
-      "name": "Elder Dragon Greyoll",
-      "killed": false
-    },
-    {
-      "id": 73,
-      "name": "Erdtree Avatar",
-      "killed": false
-    },
-    {
-      "id": 74,
-      "name": "Erdtree Burial Watchdog",
-      "killed": false
-    },
-    {
-      "id": 75,
-      "name": "Fallingstar Beast",
-      "killed": false
-    },
-    {
-      "id": 76,
-      "name": "Flying Dragon Greyll",
-      "killed": false
-    },
-    {
-      "id": 77,
-      "name": "Frenzied Duelist",
-      "killed": false
-    },
-    {
-      "id": 78,
-      "name": "Godskin Apostle",
-      "killed": false
-    },
-    {
-      "id": 79,
-      "name": "Mad Pumpkin Heads",
-      "killed": false
-    },
-    {
-      "id": 80,
-      "name": "Magma Wyrm",
-      "killed": false
-    },
-    {
-      "id": 81,
-      "name": "Night's Cavalry (2)",
-      "killed": false
-    },
-    {
-      "id": 82,
-      "name": "Nox Swordstress & Nox Priest",
-      "killed": false
-    },
-    {
-      "id": 83,
-      "name": "Putrid Avatar",
-      "killed": false
-    },
-    {
-      "id": 84,
-      "name": "Putrid Tree Spirit",
-      "killed": false
-    },
-    {
-      "id": 85,
-      "name": "Putrid Crystalian Trio",
-      "killed": false
-    },
-    {
-      "id": 86,
-      "name": "Starscourge Radahn",
-      "killed": false
-    }
+    {"id": 62, "name": "Beastman of Farum Azula", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Beastman+of+Farum+Azula"},
+    {"id": 63, "name": "Bell Bearing Hunter", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Bell+Bearing+Hunter"},
+    {"id": 64, "name": "Black Blade Kindred", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Black+Blade+Kindred"},
+    {"id": 65, "name": "Cleanrot Knight", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Cleanrot+Knight"},
+    {"id": 66, "name": "Commander O'Neil", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Commander+O'Neil"},
+    {"id": 67, "name": "Crucible Knight & Misbegotten Warrior", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Crucible+Knight+and+Misbegotten+Warrior"},
+    {"id": 68, "name": "Death Rite Bird", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Death+Rite+Bird"},
+    {"id": 69, "name": "Decaying Ekzykes", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Decaying+Ekzykes"},
+    {"id": 70, "name": "Elder Dragon Greyll", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Flying+Dragon+Greyll"},
+    {"id": 71, "name": "Erdtree Burial Watchdog", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Erdtree+Burial+Watchdog"},
+    {"id": 72, "name": "Fallingstar Beast", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Fallingstar+Beast"},
+    {"id": 73, "name": "Frenzied Duelist", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Frenzied+Duelist"},
+    {"id": 74, "name": "Godskin Apostle", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Godskin+Apostle"},
+    {"id": 75, "name": "Mad Pumpkin Head", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Mad+Pumpkin+Head"},
+    {"id": 76, "name": "Magma Wyrm", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Magma+Wyrm"},
+    {"id": 77, "name": "Night's Cavalry", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Night's+Cavalry"},
+    {"id": 78, "name": "Night's Cavalry", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Night's+Cavalry"},
+    {"id": 79, "name": "Nox Swordstress & Nox Priest", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Nox+Swordstress+&+Nox+Priest"},
+    {"id": 80, "name": "Putrid Avatar", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Putrid+Avatar"},
+    {"id": 81, "name": "Putrid Crystalians", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Putrid+Crystalians"},
+    {"id": 82, "name": "Putrid Tree Spirit", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Putrid+Tree+Spirit"},
+    {"id": 83, "name": "Starscourge Radahn", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Starscourge+Radahn"}
   ]
 }
