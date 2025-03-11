@@ -1,9 +1,11 @@
 {
   "location": "Caelid",
   "bosses": [
+    {"id": 62, "name": "Battlemage Hugues", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Battlemage+Hugues"},
     {"id": 62, "name": "Beastman of Farum Azula", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Beastman+of+Farum+Azula"},
     {"id": 63, "name": "Bell Bearing Hunter", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Bell+Bearing+Hunter"},
     {"id": 64, "name": "Black Blade Kindred", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Black+Blade+Kindred"},
+    {"id": 64, "name": "Cemetry Shade", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Cemetery+Shade"},
     {"id": 65, "name": "Cleanrot Knight", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Cleanrot+Knight"},
     {"id": 66, "name": "Commander O'Neil", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Commander+O'Neil"},
     {"id": 67, "name": "Crucible Knight & Misbegotten Warrior", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Crucible+Knight+and+Misbegotten+Warrior"},
@@ -19,6 +21,7 @@
     {"id": 77, "name": "Night's Cavalry", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Night's+Cavalry"},
     {"id": 78, "name": "Night's Cavalry", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Night's+Cavalry"},
     {"id": 79, "name": "Nox Swordstress & Nox Priest", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Nox+Swordstress+&+Nox+Priest"},
+    {"id": 80, "name": "Putrid Avatar", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Putrid+Avatar"},
     {"id": 80, "name": "Putrid Avatar", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Putrid+Avatar"},
     {"id": 81, "name": "Putrid Crystalians", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Putrid+Crystalians"},
     {"id": 82, "name": "Putrid Tree Spirit", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Putrid+Tree+Spirit"},
