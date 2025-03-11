@@ -1,0 +1,12 @@
+{
+  "location": "Gravesite Plain (SoTE)",
+  "bosses": [
+    {"id": 157, "name": "Blackgaol Knight", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Blackgaol+Knight"},
+    {"id": 158, "name": "Chief Bloodfiend", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Chief+Bloodfiend"},
+    {"id": 159, "name": "Demi-Human Swordmaster Onze", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Demi-Human+Swordmaster+Onze"},
+    {"id": 160, "name": "Divine Beast Dancing Lion", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Divine+Beast+Dancing+Lion"},
+    {"id": 161, "name": "Ghostflame Dragon", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Ghostflame+Dragon"},
+    {"id": 162, "name": "Golden Hippopotamus", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Golden+Hippopotamus"},
+    {"id": 163, "name": "Rellana, Twin Moon Knight", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Rellana+Twin+Moon+Knight"}
+  ]
+}
