@@ -2,6 +2,7 @@
   "location": "Mt. Gelmir",
   "bosses": [
     {"id": 106, "name": "Abductor Virgins", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Abductor+Virgins"},
+    {"id": 104, "name": "Demi-Human Queen Margot", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Demi-Human+Queen+Margot"},
     {"id": 107, "name": "Demi-Human Queen Maggie", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Demi-Human+Queen+Maggie"},
     {"id": 108, "name": "Erdtree Burial Watchdog", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Erdtree+Burial+Watchdog"},
     {"id": 109, "name": "Full-Grown Fallingstar Beast", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Full-Grown+Fallingstar+Beast"},
