@@ -1,20 +1,8 @@
 {
   "location": "Deeproot Depths",
   "bosses": [
-    {
-      "id": 153,
-      "name": "Crucible Knight Siluria",
-      "killed": false
-    },
-    {
-      "id": 154,
-      "name": "Fia's Champions",
-      "killed": false
-    },
-    {
-      "id": 155,
-      "name": "Lichdragon Fortissax",
-      "killed": false
-    }
+    {"id": 136, "name": "Crucible Knight Siluria", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Crucible+Knight+Siluria"},
+    {"id": 137, "name": "Fia's Champions", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Fia's+champions"},
+    {"id": 138, "name": "Lichdragon Fortissax", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Lichdragon+Fortissax"}
   ]
 }
