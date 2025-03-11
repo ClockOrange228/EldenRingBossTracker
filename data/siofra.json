@@ -1,20 +1,7 @@
 {
   "location": "Siofra River",
   "bosses": [
-    {
-      "id": 141,
-      "name": "Ancestor Spirit",
-      "killed": false
-    },
-    {
-      "id": 142,
-      "name": "Dragonkin Soldier",
-      "killed": false
-    },
-    {
-      "id": 143,
-      "name": "Mogh, Lord of Blood",
-      "killed": false
-    }
+    {"id": 131, "name": "Ancestor Spirit", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Ancestor+Spirit"},
+    {"id": 132, "name": "Dragonkin Soldier", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Dragonkin+Soldier"}
   ]
 }
