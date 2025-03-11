@@ -1,0 +1,9 @@
+{
+  "location": "Jagged Peak",
+  "bosses": [
+    {"id": 174, "name": "Ancient Dragon Senessax", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Ancient+Dragon+Senessax"},
+    {"id": 175, "name": "Bayle The Dread", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Bayle+The+Dread"},
+    {"id": 176, "name": "Jagged Peak Drake", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Jagged+Peak+Drake"},
+    {"id": 177, "name": "Jagged Peak Drake", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Jagged+Peak+Drake"}
+  ]
+}
