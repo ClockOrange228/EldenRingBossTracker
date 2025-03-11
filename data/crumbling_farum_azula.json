@@ -1,0 +1,8 @@
+{
+  "location": "Crumbling Farum Azula",
+  "bosses": [
+    {"id": 144, "name": "Beast Clergyman", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Beast+Clergyman"},
+    {"id": 145, "name": "Dragonlord Placidusax", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Dragonlord+Placidusax"},
+    {"id": 146, "name": "Godskin Duo", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Godskin+Duo"}
+  ]
+}
