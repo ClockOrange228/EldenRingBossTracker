@@ -321,4 +321,219 @@
                             .then(response => {
                                 if (!response.ok) {
                                     throw new Error(`Не удалось загрузить ${file}: ${response.status}`);
-                               
+                                }
+                                return response.json().then(data => {
+                                    console.log(`Успешно загружен файл: ${file}, Локация: ${data.location}, Боссов: ${data.bosses.length}`);
+                                    return data;
+                                });
+                            })
+                            .catch(error => {
+                                console.error(`Ошибка загрузки ${file}:`, error);
+                                return null;
+                            })
+                    );
+                    bossesData = (await Promise.all(promises)).filter(data => data !== null);
+                    if (bossesData.length === 0) {
+                        throw new Error('Не удалось загрузить ни один файл с боссами!');
+                    }
+                    console.log(`Всего загружено локаций: ${bossesData.length}`);
+                    saveBosses(bossesData);
+                } else {
+                    console.log(`Загружено локаций из localStorage: ${bossesData.length}`);
+                }
+                renderBossList();
+                setupEventListeners();
+            } catch (error) {
+                console.error('Ошибка при загрузке данных:', error);
+                const bossList = document.getElementById('bossList');
+                bossList.innerHTML = '<p class="error">Ошибка загрузки данных. Проверь консоль и пути к файлам.</p>';
+            }
+        }
+
+        function getProgressColor(percentage) {
+            if (percentage <= 33) return '#ff4444';
+            if (percentage <= 66) return '#ffcc00';
+            return '#00cc00';
+        }
+
+        function renderBossList() {
+            const bossList = document.getElementById('bossList');
+            bossList.innerHTML = '';
+            console.log('Список локаций для рендеринга:', bossesData.map(loc => loc.location));
+            bossesData.forEach(location => {
+                console.log(`Рендеринг локации: ${location.location}, Total Bosses in Data: ${location.bosses.length}`);
+                console.log(`Боссы в ${location.location}:`, location.bosses.map(b => b.name));
+                const totalBosses = location.bosses.length;
+                const killedBosses = location.bosses.filter(boss => boss.killed).length;
+                const completionPercentage = ((killedBosses / totalBosses) * 100).toFixed(2);
+                const progressColor = getProgressColor(completionPercentage);
+
+                const locationDiv = document.createElement('div');
+                locationDiv.className = 'location';
+                locationDiv.innerHTML = `
+                    <div class="location-header" data-location="${location.location}">
+                        <span>${location.location}</span>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" style="width: ${completionPercentage}%; background-color: ${progressColor};"></div>
+                        </div>
+                        <span class="progress-text" style="color: ${progressColor}">${killedBosses}/${totalBosses} (${completionPercentage}%)</span>
+                    </div>
+                    <div class="bosses-container">
+                        ${location.bosses.map(boss => `
+                            <div class="boss-item" data-boss-id="${boss.id}">
+                                <input type="checkbox" data-location="${location.location}" data-boss-id="${boss.id}" ${boss.killed ? 'checked' : ''}>
+                                <a href="${boss.wikiLink}" target="_blank">${boss.name}</a>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                bossList.appendChild(locationDiv);
+                console.log(`Локация: ${location.location}, Rendered Bosses: ${locationDiv.querySelectorAll('.boss-item').length}`);
+            });
+            updateStats();
+            applyFiltersAndSearch();
+        }
+
+        function updateBossItem(locationName, bossId) {
+            const location = bossesData.find(loc => loc.location === locationName);
+            const boss = location.bosses.find(b => b.id === bossId);
+            const totalBosses = location.bosses.length;
+            const killedBosses = location.bosses.filter(b => b.killed).length;
+            const completionPercentage = ((killedBosses / totalBosses) * 100).toFixed(2);
+            const progressColor = getProgressColor(completionPercentage);
+
+            const locationDiv = document.querySelector(`.location-header[data-location="${locationName}"]`);
+            const progressBar = locationDiv.querySelector('.progress-bar');
+            const progressText = locationDiv.querySelector('.progress-text');
+            progressBar.style.width = `${completionPercentage}%`;
+            progressBar.style.backgroundColor = progressColor;
+            progressText.textContent = `${killedBosses}/${totalBosses} (${completionPercentage}%)`;
+            progressText.style.color = progressColor;
+
+            const checkbox = document.querySelector(`.boss-item input[data-location="${locationName}"][data-boss-id="${bossId}"]`);
+            checkbox.checked = boss.killed;
+
+            updateStats();
+            applyFiltersAndSearch();
+        }
+
+        function toggleBoss(locationName, bossId) {
+            bossesData = bossesData.map(location => {
+                if (location.location === locationName) {
+                    location.bosses = location.bosses.map(boss => {
+                        if (boss.id === bossId) {
+                            return { ...boss, killed: !boss.killed };
+                        }
+                        return boss;
+                    });
+                }
+                return location;
+            });
+            saveBosses(bossesData);
+            updateBossItem(locationName, bossId);
+        }
+
+        function updateStats() {
+            const totalBosses = bossesData.reduce((sum, location) => sum + location.bosses.length, 0);
+            const killedBosses = bossesData.reduce((sum, location) => 
+                sum + location.bosses.filter(boss => boss.killed).length, 0);
+            const completionPercentage = ((killedBosses / totalBosses) * 100).toFixed(2);
+            const stats = document.getElementById('stats');
+            stats.textContent = `Bosses: ${killedBosses}/${totalBosses} (${completionPercentage}%)`;
+        }
+
+        function applyFiltersAndSearch() {
+            const searchValue = searchQuery.toLowerCase();
+            console.log('Текущие фильтры:', filters);
+            console.log('Текущий поисковый запрос:', searchQuery);
+            
+            const noFiltersActive = !Object.values(filters).some(v => v);
+
+            document.querySelectorAll('.location').forEach(location => {
+                const locationName = location.querySelector('.location-header').getAttribute('data-location');
+                const bosses = bossesData.find(loc => loc.location === locationName).bosses;
+                let hasVisibleBosses = false;
+
+                location.querySelectorAll('.boss-item').forEach(item => {
+                    const bossName = item.querySelector('a').textContent.toLowerCase();
+                    const bossId = parseInt(item.getAttribute('data-boss-id'));
+                    const boss = bosses.find(b => b.id === bossId);
+                    const matchesSearch = bossName.includes(searchValue);
+
+                    const isKilled = boss.killed;
+                    const isGreatRuneHolder = greatRuneHolders.includes(boss.id);
+                    const isRequired = requiredBosses.includes(boss.id);
+
+                    const matchesKilled = filters.killed && isKilled;
+                    const matchesNotKilled = filters['not-killed'] && !isKilled;
+                    const matchesGreatRune = filters['great-rune'] && isGreatRuneHolder;
+                    const matchesRequired = filters.required && isRequired;
+
+                    const bothKilledAndNotKilled = filters.killed && filters['not-killed'];
+
+                    let matchesFilters = noFiltersActive || bothKilledAndNotKilled ||
+                        (!filters.killed && !filters['not-killed'] && !filters['great-rune'] && !filters.required) ||
+                        (filters.killed && matchesKilled) ||
+                        (filters['not-killed'] && matchesNotKilled) ||
+                        (filters['great-rune'] && matchesGreatRune) ||
+                        (filters.required && matchesRequired);
+
+                    if (matchesSearch && matchesFilters) {
+                        item.classList.remove('hidden');
+                        hasVisibleBosses = true;
+                    } else {
+                        item.classList.add('hidden');
+                        console.log(`Скрыт босс: ${boss.name} в локации ${locationName}. Причина: ${matchesSearch ? '' : 'не соответствует поиску'} ${matchesFilters ? '' : 'не соответствует фильтру'}`);
+                    }
+                });
+
+                location.style.display = hasVisibleBosses ? 'block' : 'none';
+            });
+        }
+
+        function setupEventListeners() {
+            document.querySelectorAll('.location-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const container = header.nextElementSibling;
+                    container.classList.toggle('open');
+                });
+            });
+
+            document.querySelectorAll('.boss-item input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', (event) => {
+                    const locationName = checkbox.getAttribute('data-location');
+                    const bossId = parseInt(checkbox.getAttribute('data-boss-id'));
+                    toggleBoss(locationName, bossId);
+                });
+            });
+
+            const filterButton = document.querySelector('.filter-button');
+            const filterMenu = document.querySelector('.filter-menu');
+            filterButton.addEventListener('click', () => {
+                filterMenu.classList.toggle('open');
+            });
+
+            document.querySelectorAll('.filter-menu input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', (event) => {
+                    const filterName = event.target.value;
+                    filters[filterName] = event.target.checked;
+                    applyFiltersAndSearch();
+                });
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!filterButton.contains(event.target) && !filterMenu.contains(event.target)) {
+                    filterMenu.classList.remove('open');
+                }
+            });
+
+            document.getElementById('search').addEventListener('input', (event) => {
+                searchQuery = event.target.value;
+                applyFiltersAndSearch();
+            });
+        }
+
+        fetchBossesData();
+    </script>
+</body>
+</html>
