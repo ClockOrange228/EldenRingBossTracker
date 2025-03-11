@@ -1,15 +1,7 @@
 {
   "location": "Lake of Rot",
   "bosses": [
-    {
-      "id": 156,
-      "name": "Astel, Naturalborn of the Void",
-      "killed": false
-    },
-    {
-      "id": 157,
-      "name": "Dragonkin Soldier",
-      "killed": false
-    } 
+    {"id": 134, "name": "Astel, Naturalborn of the Void", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Astel+Naturalborn+of+the+Void"},
+    {"id": 135, "name": "Dragonkin Soldier", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Dragonkin+Soldier"}
   ]
 }
