@@ -1,0 +1,13 @@
+{
+  "location": "Scadu Altus",
+  "bosses": [
+    {"id": 166, "name": "Black Knight Edredd", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Black+Knight+Edredd"},
+    {"id": 167, "name": "Black Knight Garrew", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Black+Knight+Garrew"},
+    {"id": 168, "name": "Curseblade Labirith", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Curseblade+Labirith"},
+    {"id": 169, "name": "Demi-Human Queen Marigga", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Demi-Human+Queen+Marigga"},
+    {"id": 170, "name": "Ghostflame Dragon", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Ghostflame+Dragon"},
+    {"id": 171, "name": "Messmer the Impaler", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Messmer+the+Impaler"},
+    {"id": 172, "name": "Ralva the Great Red Bear", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Ralva+the+Great+Red+Bear"},
+    {"id": 173, "name": "Red Bear", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Red+Bear"}
+  ]
+}
