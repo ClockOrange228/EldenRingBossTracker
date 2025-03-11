@@ -1,80 +1,14 @@
 {
   "location": "Mountaintops of the Giants",
   "bosses": [
-    {
-      "id": 126,
-      "name": "Ancient Hero of Zamor",
-      "killed": false
-    },
-    {
-      "id": 127,
-      "name": "Astel, Stars of Darkness",
-      "killed": false
-    },
-    {
-      "id": 128,
-      "name": "Black Blade Kindred",
-      "killed": false
-    },
-    {
-      "id": 129,
-      "name": "Borealis the Freezing Fog",
-      "killed": false
-    },
-    {
-      "id": 130,
-      "name": "Commander Niall",
-      "killed": false
-    },
-    {
-      "id": 131,
-      "name": "Death Rite Bird (Central Mountaintops of the Giants)",
-      "killed": false
-    },
-    {
-      "id": 132,
-      "name": "Death Rite Bird (West Mountaintops of the Giants)",
-      "killed": false
-    },
-    {
-      "id": 133,
-      "name": "Erdtree Avatar",
-      "killed": false
-    },
-    {
-      "id": 134,
-      "name": "Fire Giant",
-      "killed": false
-    },
-    {
-      "id": 135,
-      "name": "Godskin Apostle & Godskin Noble",
-      "killed": false
-    },
-    {
-      "id": 136,
-      "name": "Great Wyrm Theodorix",
-      "killed": false
-    },
-    {
-      "id": 137,
-      "name": "Misbegotten Crusader",
-      "killed": false
-    },
-    {
-      "id": 138,
-      "name": "Tibia Mariner",
-      "killed": false
-    },
-    {
-      "id": 139,
-      "name": "Ulcerated Tree Spirit",
-      "killed": false
-    },
-    {
-      "id": 140,
-      "name": "Vyke, Knight of the Roundtable",
-      "killed": false
-    }
+    {"id": 115, "name": "Ancient Hero of Zamor", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Ancient+Hero+of+Zamor"},
+    {"id": 116, "name": "Black Blade Kindred", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Black+Blade+Kindred"},
+    {"id": 117, "name": "Borealis the Freezing Fog", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Borealis+the+Freezing+Fog"},
+    {"id": 118, "name": "Commander Niall", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Commander+Niall"},
+    {"id": 119, "name": "Death Rite Bird", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Death+Rite+Bird"},
+    {"id": 120, "name": "Erdtree Avatar", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Erdtree+Avatar"},
+    {"id": 121, "name": "Fire Giant", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Fire+Giant"},
+    {"id": 122, "name": "Ulcerated Tree Spirit", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Ulcerated+Tree+Spirit"},
+    {"id": 123, "name": "Vyke, Knight of the Roundtable", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Roundtable+Knight+Vyke"}
   ]
 }
