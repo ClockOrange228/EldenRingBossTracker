@@ -1,40 +1,12 @@
 {
-  "location": "Consecrated snowfield",
+  "location": "Consecrated Snowfield",
   "bosses": [
-    {
-      "id": 158,
-      "name": "Battlemage Hugues",
-      "killed": false
-    },
-    {
-      "id": 159,
-      "name": "Beastman of Farum Azula",
-      "killed": false
-    },
-    {
-      "id": 160,
-      "name": "Bell Bearing Hunter",
-      "killed": false
-    },
-    {
-      "id": 161,
-      "name": "Black Blade Kindred",
-      "killed": false
-    },
-    {
-      "id": 162,
-      "name": "Cemetery Shade",
-      "killed": false
-    },
-    {
-      "id": 163,
-      "name": "Cleanrot Knight",
-      "killed": false
-    },
-    {
-      "id": 164,
-      "name": "Commander O'Neil",
-      "killed": false
-    }
+    {"id": 124, "name": "Astel, Stars of Darkness", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Astel,+Stars+of+Darkness"},
+    {"id": 125, "name": "Death Rite Bird", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Death+Rite+Bird"},
+    {"id": 126, "name": "Great Wyrm Theodorix", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Great+Wyrm+Theodorix"},
+    {"id": 127, "name": "Misbegotten Crusader", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Misbegotten+Crusader"},
+    {"id": 128, "name": "Night's Cavalry (2)", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Night's+Cavalry"},
+    {"id": 129, "name": "Putrid Avatar", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Putrid+Avatar"},
+    {"id": 130, "name": "Putrid Grave Warden Duelist", "killed": false, "wikiLink": "https://eldenring.wiki.fextralife.com/Putrid+Grave+Warden+Duelist"}
   ]
 }
